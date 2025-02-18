@@ -22,6 +22,8 @@ echo <<<HTML
     <link rel="stylesheet" href="../fontawesome/css/brands.css">
     <link rel="stylesheet" href="../fontawesome/css/solid.css">
     <script src="../public/js/jquery-3.7.1.min.js"></script>
+    <script src='../public/js/maskmoney/src/jquery.maskMoney.js'></script>
+    <script src="../public/js/affMtt.js"></script> <!-- Afficher FCFA -->
 HTML;
     // Fichiers Style
     include '../public/css/allCss.php';
@@ -71,7 +73,7 @@ echo <<<HTML
             </li>
 
             <li>
-                <a href="#">
+                <a href="Boissons.php">
                     <i class="fa-solid fa-champagne-glasses"></i>
                     <span class="link_name">Boissons</span>
                 </a>
@@ -87,7 +89,7 @@ echo <<<HTML
             </li>
 
             <li>
-                <a href="#">
+                <a href="dpnses.php">
                     <i class="fa-solid fa-coins"></i>
                     <span class="link_name">Dépenses</span>
                 </a>
@@ -95,7 +97,7 @@ echo <<<HTML
             </li>
 
             <li>
-                <a href="#">
+                <a href="suppliers.php">
                     <i class="fa-solid fa-truck"></i>
                     <span class="link_name">Fournisseurs</span>
                 </a>
@@ -103,7 +105,7 @@ echo <<<HTML
             </li>
 
             <li>
-                <a href="#">
+                <a href="users.php">
                     <i class="fa-solid fa-users"></i>
                     <span class="link_name">Utilisateurs</span>
                 </a>
