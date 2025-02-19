@@ -60,7 +60,7 @@
                 </div>
 
                 <div>
-                    <label for="nbrebout">Nombre de bouteilles</label><br>
+                    <label for="nbrebout">Nombre de bouteilles par casier</label><br>
                     <input type="number" name="nbrebout" id="nbrebout" maxlength="5" required>
                 </div>
 
@@ -79,7 +79,7 @@
                 </div>
 
                 <div>
-                    <label for="nbrekit">Bouteilles par kit</label><br>
+                    <label for="nbrekit">Nombre de bouteilles par kit</label><br>
                     <input type="number" name="nbrekit" id="nbrekit" maxlength="5" required>
                 </div>
 

@@ -65,7 +65,7 @@ echo <<<HTML
             </li>
 
             <li>
-                <a href="#">
+                <a href="stocks.php">
                     <i class="fa-regular fa-house-user"></i>
                     <span class="link_name">Stocks</span>
                 </a>
@@ -81,7 +81,7 @@ echo <<<HTML
             </li>
 
             <li>
-                <a href="#">
+                <a href="cmdes.php">
                     <i class="fa-solid fa-handshake-simple"></i>
                     <span class="link_name">Commandes</span>
                 </a>
