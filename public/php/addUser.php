@@ -43,14 +43,6 @@
                 </div>
 
                 <div>
-                    <label for="service">Lieu de service</label><br>
-                    <select name="service" id="service" required>
-                        <option value=""></option>
-                        
-                    </select>
-                </div>
-
-                <div>
                     <label for="username">Identifiant</label><br>
                     <input type="text" name="username" id="username" maxlength="30" required>
                 </div>

@@ -28,6 +28,27 @@
     text-align: center;
 }
 
+.left-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-one div {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 650px) {
+    .left-content {
+        flex-direction: column;
+    }
+
+    .left-one {
+        margin-bottom: 20px;
+    }
+}
+
 .cmd-right {
     width: 350px;
 }

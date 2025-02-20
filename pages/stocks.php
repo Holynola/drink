@@ -2,7 +2,7 @@
 
 require_once "design.php";
 
-$titre = "Stock";
+$titre = "Stocks";
 $page = "../public/php/stock.php";
 
 monModel($titre, $page);

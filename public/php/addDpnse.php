@@ -25,14 +25,6 @@
                 </div>
 
                 <div>
-                    <label for="service">Lieu de service</label><br>
-                    <select name="service" id="service" required>
-                        <option value=""></option>
-                        
-                    </select>
-                </div>
-
-                <div>
                     <label for="madeby">Effectuée par</label><br>
                     <select name="madeby" id="madeby" required>
                         <option value=""></option>

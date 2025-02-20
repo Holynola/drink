@@ -84,14 +84,6 @@
                 </div>
 
                 <div>
-                    <label for="service">Lieu de service</label><br>
-                    <select name="service" id="service" required>
-                        <option value=""></option>
-                        
-                    </select>
-                </div>
-
-                <div>
                     <button type="submit" id="eng">Enregistrer</button>
                 </div>
             </form>

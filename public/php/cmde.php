@@ -4,7 +4,7 @@
     color: var(--rouge);
 }
 
-.all-div div:nth-child(3) {
+.all-div div:nth-child(4) {
     color: var(--bleu);
 }
 
@@ -28,16 +28,18 @@
         <div class="all-content">
             <div class="all-div ett">
                 <div>Date de commande</div>
-                <div>Montant</div>
+                <div>Montant total</div>
+                <div>Montant réglé</div>
+                <div>Rester à régler</div>
                 <div>Effectuée par</div>
-                <div>Fournisseur</div>
                 <div></div>
             </div>
             <div class="all-div atr">
                 <div>19 Février 2025</div>
                 <div>50 000 FCFA</div>
+                <div>40 000 FCFA</div>
+                <div>10 000 FCFA</div>
                 <div>Axel Jean</div>
-                <div>Dépot du commerce</div>
                 <div>
                     <a href="#">Plus de détails</a>
                 </div>

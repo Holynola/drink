@@ -57,7 +57,7 @@ echo <<<HTML
             </li>
 
             <li>
-                <a href="#">
+                <a href="ventes.php">
                     <i class="fa-solid fa-sack-dollar"></i>
                     <span class="link_name">Ventes</span>
                 </a>

@@ -84,6 +84,11 @@
                         </div>
 
                         <div>
+                            <label for="mtr">Montant réglé</label><br>
+                            <input type="text" name="mtr" id="mtr" class="currency" autocomplete="off" required>
+                        </div>
+
+                        <div>
                             <label for="four">Fournisseur</label><br>
                             <select name="four" id="four" required>
                                 <option value=""></option>

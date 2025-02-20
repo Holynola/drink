@@ -30,7 +30,6 @@
                 <div>Date d'enregistrement</div>
                 <div>Nom et Prénoms</div>
                 <div>Poste</div>
-                <div>Lieu de service</div>
                 <div>Satut du compte</div>
                 <div></div>
             </div>
@@ -38,7 +37,6 @@
                 <div>17 Février 2025</div>
                 <div>Koffi Ange Ridolf</div>
                 <div>Gérant</div>
-                <div>Maquis</div>
                 <div>Activé</div>
                 <div>
                     <a href="#">Plus de détails</a>

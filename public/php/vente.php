@@ -11,15 +11,15 @@
 </style>
 
 <div class="top">
-    <i class="fa-solid fa-coins"></i>
-    <h4>Dépenses</h4>
+    <i class="fa-solid fa-sack-dollar"></i>
+    <h4>Ventes</h4>
 </div>
 
 <div class="add-tri">
     <?php include 'triDiv.php'; ?>
 
     <div class="add-btn">
-        <a href="addDpnses.php" class="btn-link">Ajouter une dépense</a>
+        <a href="addVentes.php" class="btn-link">Ajouter une vente</a>
     </div>
 </div>
 
@@ -27,19 +27,19 @@
     <div class="content">
         <div class="all-content">
             <div class="all-div ett">
-                <div>Date de dépense</div>
-                <div>Montant</div>
-                <div>Montant reglé</div>
-                <div>Restant à régler</div>
-                <div>Détails</div>
+                <div>Date de vente</div>
+                <div>Montant de vente</div>
+                <div>Montant réglé</div>
+                <div>Reste à régler</div>
+                <div>Caissier/ière</div>
                 <div></div>
             </div>
             <div class="all-div atr">
-                <div>17 Février 2025</div>
-                <div>20 000 FCFA</div>
-                <div>15 000 FCFA</div>
+                <div>19 Février 2025</div>
+                <div>100 000 FCFA</div>
+                <div>95 000 FCFA</div>
                 <div>5 000 FCFA</div>
-                <div>Achat de glace pour la soirée tout blanc</div>
+                <div>Julitte Koffi</div>
                 <div>
                     <a href="#">Plus de détails</a>
                 </div>
