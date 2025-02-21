@@ -1,5 +1,13 @@
 <style>
 
+p {
+    max-width: 500px;
+    margin: 0 auto;
+    font-size: 14px;
+    color: var(--rouge);
+    margin-bottom: 30px;
+}
+
 .user {
     width: 100%;
     display: flex;

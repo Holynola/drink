@@ -49,11 +49,19 @@ echo <<<HTML
             </li>
 
             <li>
-                <a href="#">
+                <a href="points.php">
                     <i class="fa-solid fa-chart-simple"></i>
                     <span class="link_name">Points</span>
                 </a>
                 <span class="tooltip">Points</span>
+            </li>
+
+            <li>
+                <a href="benefs.php">
+                    <i class="fa-solid fa-wallet"></i>
+                    <span class="link_name">Bénéfices</span>
+                </a>
+                <span class="tooltip">Bénéfices</span>
             </li>
 
             <li>

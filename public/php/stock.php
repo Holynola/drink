@@ -31,6 +31,7 @@
 
     <div class="add-btn">
         <a href="#" class="btn-link">Trier par stock</a>
+        <a href="addStock.php" class="btn-link">Ajouter un stock</a>
     </div>
 </div>
 
