@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    session_unset();     // Supprime toutes les variables de session
+    session_destroy();
+    
+    include 'control/alert.php';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -18,9 +25,9 @@
         <div class="log">
             <h1>Bienvenue au <span>KERENS</span></h1>
             
-            <form action="#">
+            <form action="control/session.php" method="post">
                 <p>Identifiant</p>
-                <input type="text" name="username" id="username" placeholder="Entrez votre identifiant" maxlength="50" autocomplete="off">
+                <input type="text" name="username" id="username" placeholder="Entrez votre identifiant" maxlength="30" autocomplete="off">
 
                 <p>Mot de passe</p>
                 <input type="password" name="password" id="password" placeholder="••••••••••••••••••••••••••" minlength="4"><br>

@@ -6,7 +6,7 @@ date_default_timezone_set('Africa/Abidjan');
 
 // Paramètres de connexion
 $host = 'localhost'; // Nom de l'hôte
-$dbname = 'ecole'; // Nom de la base de données
+$dbname = 'peub'; // Nom de la base de données
 $user = 'root'; // Nom d'utilisateur
 $pass = '101214Bureau'; // Mot de passe
 $options = [

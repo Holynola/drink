@@ -1,3 +1,8 @@
+<?php
+
+include '../control/infoSess.php';
+?>
+
 <style>
 
 .all-div div:nth-child(2) {
@@ -12,7 +17,7 @@
 
 <div class="top">
     <i class="fa-solid fa-sack-dollar"></i>
-    <h4>Ventes</h4>
+    <h4>Ventes | <?= $lieu; ?></h4>
 </div>
 
 <div class="add-tri">

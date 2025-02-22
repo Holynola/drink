@@ -1,5 +1,16 @@
 <?php
 
+session_start();
+
+include '../control/dbConf.php';
+include '../control/recupAll.php';
+include '../control/infoSess.php';
+include '../control/affDate.php';
+include '../control/addHour.php';
+include '../control/affPost.php';
+include '../control/affStt.php';
+include '../control/affWork.php';
+
 function monModel($titre, $page) {
 
 include '../control/dbConf.php';

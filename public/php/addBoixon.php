@@ -1,4 +1,10 @@
-<?php include '../public/css/addUserCss.php'; ?>
+<?php 
+
+include '../control/infoSess.php';
+
+include '../public/css/addUserCss.php'; 
+
+?>
 
 <script>
     function openPage2() {
@@ -12,7 +18,7 @@
 
 <div class="top">
     <i class="fa-solid fa-wine-glass"></i>
-    <h4>Ajouter une boisson</h4>
+    <h4>Ajouter une boisson | <?= $lieu; ?></h4>
 </div>
 
 <div class="cotent">

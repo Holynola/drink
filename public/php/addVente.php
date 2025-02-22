@@ -1,5 +1,9 @@
-<?php include '../public/css/addUserCss.php'; ?>
-<?php include '../public/css/addCmdeCss.php'; ?>
+<?php 
+include '../control/infoSess.php';
+
+include '../public/css/addUserCss.php';
+include '../public/css/addCmdeCss.php'; 
+?>
 
 <div class="top">
     <i class="fa-solid fa-sack-dollar"></i>

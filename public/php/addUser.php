@@ -1,14 +1,21 @@
-<?php include '../public/css/addUserCss.php'; ?>
+<?php 
+include '../control/alert.php';
+include '../control/infoSess.php';
+
+include '../public/css/addUserCss.php'; 
+?>
+
+<script src="../public/js/verifpass.js"></script>
 
 <div class="top">
     <i class="fa-solid fa-user"></i>
-    <h4>Ajouter un utilisateur</h4>
+    <h4>Ajouter un utilisateur | <?= $lieu; ?></h4>
 </div>
 
 <div class="content">
     <div class="user">
         <div class="r-info">
-            <form action="#">
+            <form action="../control/addUs.php" method="post" id="addForm">
                 <div>
                     <label for="titre">Titre</label><br>
                     <select name="titre" id="titre" required>
@@ -38,7 +45,14 @@
                     <label for="poste">Poste</label><br>
                     <select name="poste" id="poste" required>
                         <option value=""></option>
-                        
+                        <?php
+                            $conP = "idPo != 5";
+                            $donP = recupDon('poste', $conP);
+
+                            foreach ($donP as $pos) {
+                        ?>
+                        <option value="<?= $pos['idPo']; ?>"><?= $pos['libellePo']; ?></option>
+                        <?php } ?>
                     </select>
                 </div>
 
@@ -58,7 +72,7 @@
                 </div>
 
                 <div>
-                    <button type="submit" id="eng">Enregistrer</button>
+                    <button type="submit" name="submit" id="eng">Enregistrer</button>
                 </div>
             </form>
         </div>

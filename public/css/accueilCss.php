@@ -36,7 +36,6 @@ header::after {
 
 .home {
     width: 500px;
-    height: 500px;
     z-index: 10;
     color: #fff;
 }

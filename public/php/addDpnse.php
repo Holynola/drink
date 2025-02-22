@@ -1,8 +1,12 @@
-<?php include '../public/css/addUserCss.php'; ?>
+<?php 
+include '../control/infoSess.php';
+
+include '../public/css/addUserCss.php'; 
+?>
 
 <div class="top">
     <i class="fa-solid fa-coins"></i>
-    <h4>Ajouter une dépense</h4>
+    <h4>Ajouter une dépense | <?= $lieu; ?></h4>
 </div>
 
 <div class="content">

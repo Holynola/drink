@@ -1,3 +1,7 @@
+<?php
+
+include '../control/infoSess.php';
+?>
 <style>
 
 .all-div div:nth-child(2) {
@@ -12,7 +16,7 @@
 
 <div class="top">
     <i class="fa-solid fa-handshake-simple"></i>
-    <h4>Commandes</h4>
+    <h4>Commandes | <?= $lieu; ?></h4>
 </div>
 
 <div class="add-tri">

@@ -1,3 +1,11 @@
+<?php
+
+include '../control/alert.php';
+include '../control/infoSess.php';
+include '../control/affPost.php';
+include '../control/affStt.php';
+?>
+
 <style>
 
 .all-div div:nth-child(3) {
@@ -12,7 +20,7 @@
 
 <div class="top">
     <i class="fa-solid fa-users"></i>
-    <h4>Utilisateurs</h4>
+    <h4>Utilisateurs | <?= $lieu; ?></h4>
 </div>
 
 <div class="add-tri">
@@ -30,18 +38,49 @@
                 <div>Date d'enregistrement</div>
                 <div>Nom et Prénoms</div>
                 <div>Poste</div>
-                <div>Satut du compte</div>
+                <div>Statut du compte</div>
                 <div></div>
             </div>
+            <?php
+                $conU = "posteU != 5 AND statutU = 'ON' OR statutU = 'OFF'";
+                $donU = recupDon('users', $conU);
+
+                foreach ($donU as $user) {
+            ?>
             <div class="all-div atr">
-                <div>17 Février 2025</div>
-                <div>Koffi Ange Ridolf</div>
-                <div>Gérant</div>
-                <div>Activé</div>
+                <!-- Date d'enregistrement -->
                 <div>
-                    <a href="#">Plus de détails</a>
+                    <?php
+                        $dateEng = $user['datesaveU'];
+                        $dateFR = extraireDateFR($dateEng);
+                        echo $dateFR;
+                    ?>
+                </div>
+                
+                <!-- Nom et Prénoms -->
+                <div><?= $user['nomU'] . ' ' . $user['prenomsU']; ?></div>
+                
+                <!-- Poste -->
+                <div>
+                    <?php
+                        $poste = $user['posteU'];
+                        affPoste($poste);
+                    ?>
+                </div>
+                
+                <!-- Statut du compte -->
+                <div>
+                    <?php
+                        $statut = $user['statutU'];
+                        affStatut($statut);
+                    ?>
+                </div>
+                
+                <div>
+                    <a href="infosUser.php?id=<?= $user['idU']; ?>">Plus de détails</a>
                 </div>
             </div>
+            <?php } ?>
         </div>
     </div>
 </div>

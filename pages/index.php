@@ -1,3 +1,21 @@
+<?php
+    session_start();
+
+    include 'checkSession.php'; // Vérifie la connexion et le temps de la dernière connexion
+
+    include '../control/dbConf.php';
+    include '../control/recupAll.php';
+
+    // Vérification du lieu de service
+    if (isset($_SESSION['service']) && ($_SESSION['service'] != 3)) {
+        $service = $_SESSION['service'];
+        $url = "tdb.php?work=" . $service;
+        header("Location:" . $url);
+    }
+
+    // Suppression du lieu de service
+    unset($_SESSION['service']);
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -16,17 +34,20 @@
 <body>
     <header>
         <div class="home">
-            <h2>Merci de vous êtes connectés. Veuillez sélectionner votre lieu de service</h2>
+            <h2>Merci de vous êtes connectés. Veuillez sélectionner un lieu de service</h2>
 
             <div class="home-all">
+                <?php
+                    $con = "idW != 3";
+                    $donWork = recupDon('work', $con);
+
+                    foreach ($donWork as $wk) {
+                ?>
                 <div class="home-card">
-                    <h3>Kerens Bar</h3>
-                    <a href="#">Cliquer ici</a>
+                    <h3><?= $wk['libelleW'] . ' ' . $wk['lieuW']; ?></h3>
+                    <a href="tdb.php?work=<?= $wk['idW']; ?>">Cliquer ici</a>
                 </div>
-                <div class="home-card">
-                    <h3>Maquis Kerens</h3>
-                    <a href="#">Cliquer ici</a>
-                </div>
+                <?php } ?>
             </div>
         </div>
     </header>

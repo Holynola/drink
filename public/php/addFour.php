@@ -1,8 +1,12 @@
-<?php include '../public/css/addUserCss.php'; ?>
+<?php 
+include '../control/infoSess.php';
+
+include '../public/css/addUserCss.php'; 
+?>
 
 <div class="top">
     <i class="fa-solid fa-cubes"></i>
-    <h4>Ajouter un fournisseur</h4>
+    <h4>Ajouter un fournisseur | <?= $lieu; ?></h4>
 </div>
 
 <div class="content">

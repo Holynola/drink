@@ -1,8 +1,12 @@
-<?php include '../public/css/BoissonCss.php'; ?>
+<?php
+include '../control/infoSess.php';
+
+include '../public/css/BoissonCss.php'; 
+?>
 
 <div class="top">
     <i class="fa-solid fa-champagne-glasses"></i>
-    <h4>Boissons</h4>
+    <h4>Boissons | <?= $lieu; ?></h4>
 </div>
 
 <div class="add-tri">

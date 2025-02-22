@@ -1,9 +1,14 @@
-<?php include '../public/css/addUserCss.php'; ?>
-<?php include '../public/css/addCmdeCss.php'; ?>
+<?php 
+
+include '../control/infoSess.php';
+
+include '../public/css/addUserCss.php';
+include '../public/css/addCmdeCss.php'; 
+?>
 
 <div class="top">
     <i class="fa-solid fa-handshake-simple"></i>
-    <h4>Ajouter une commande</h4>
+    <h4>Ajouter une commande | <?= $lieu; ?></h4>
 </div>
 
 <div class="content">
