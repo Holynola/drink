@@ -1,4 +1,5 @@
 <?php 
+
 include '../control/infoSess.php';
 
 include '../public/css/addUserCss.php'; 
@@ -12,7 +13,7 @@ include '../public/css/addUserCss.php';
 <div class="content">
     <div class="user">
         <div class="r-info">
-            <form action="#">
+            <form action="../control/addFourn.php" method="post">
                 <div>
                     <label for="four">Nom du fournisseur</label><br>
                     <input type="text" name="four" id="four" maxlength="100" required>

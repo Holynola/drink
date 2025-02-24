@@ -6,15 +6,20 @@
     include '../control/dbConf.php';
     include '../control/recupAll.php';
 
-    // Vérification du lieu de service
-    if (isset($_SESSION['service']) && ($_SESSION['service'] != 3)) {
-        $service = $_SESSION['service'];
-        $url = "tdb.php?work=" . $service;
-        header("Location:" . $url);
-    }
 
-    // Suppression du lieu de service
-    unset($_SESSION['service']);
+    if (isset($_SESSION['service'])) {
+        if (($_SESSION['poste'] != 3) && ($_SESSION['poste'] != 4)) {
+            // Suppression du lieu de service
+            unset($_SESSION['service']);
+        } else {
+            if ($_SESSION['service'] != 3) {
+                // Vérification du lieu de service
+                $service = $_SESSION['service'];
+                $url = "tdb.php?work=" . $service;
+                header("Location:" . $url);
+            }
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="fr">

@@ -2,9 +2,7 @@
 
 include '../control/infoSess.php';
 
-include '../public/css/bordCss.php'; 
-
-global $lieu;
+include '../public/css/bordCss.php';
 ?>
 
 <div class="top">
@@ -12,8 +10,8 @@ global $lieu;
     <h4>Tableau de bord | <?= $lieu; ?></h4>
 </div>
 
-<div class="bord">
-    <div class="content">
+<div class="content">
+    <div class="bord">
         <div class="bord-all"></div>
     </div>
 </div>

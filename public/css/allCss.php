@@ -54,6 +54,32 @@
     color: var(--blanc);
 }
 
+/* Recap */
+
+.recap {
+    margin: 50px 0;
+    text-align: center;
+}
+
+.recap h5 {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.recap div {
+    font-size: 20px;
+}
+
+@media (max-width: 400px) {
+    .recap h5 {
+        font-size: 20px;
+    }
+    
+    .recap div {
+        font-size: 16px;
+    }
+}
+
 /* Bouton */
 
 .btn-link {

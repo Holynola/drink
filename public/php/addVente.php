@@ -7,7 +7,7 @@ include '../public/css/addCmdeCss.php';
 
 <div class="top">
     <i class="fa-solid fa-sack-dollar"></i>
-    <h4>Ajouter une vente</h4>
+    <h4>Ajouter une vente | <?= $lieu; ?></h4>
 </div>
 
 <div class="content">

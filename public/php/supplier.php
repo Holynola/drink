@@ -1,5 +1,6 @@
 <?php
 
+include '../control/alert.php';
 include '../control/infoSess.php';
 ?>
 <style>
@@ -37,15 +38,38 @@ include '../control/infoSess.php';
                 <div>Contact</div>
                 <div></div>
             </div>
+            <?php
+                $conF = "statutF = 'ON' ORDER BY nomF ASC";
+                $donF = recupDon('fournisseur', $conF);
+
+                foreach ($donF as $four) {
+            ?>
             <div class="all-div atr">
-                <div>17 février 2025</div>
-                <div>Dépôt du grand marché</div>
-                <div>Grand marché du Commerce</div>
-                <div>0705002536</div>
+                <!-- Date d'enregistrement -->
                 <div>
-                    <a href="#">Supprimer</a>
+                    <?php
+                        $dateEng = $four['datesaveF'];
+                        $dateFR = extraireDateFR($dateEng);
+                        echo $dateFR;
+                    ?>
+                </div>
+                
+                <!-- Nom du fournisseur -->
+                <div><?= $four['nomF']; ?></div>
+                
+                <!-- Localisation -->
+                <div><?= $four['localF']; ?></div>
+                
+                <!-- Contact -->
+                <div><?= $four['numF']; ?></div>
+                
+                <div>
+                    <a href="../control/delFour.php?idt=<?= $four['idF']; ?>" onclick="return confirmLink()">Supprimer</a>
                 </div>
             </div>
+            <?php } ?>
         </div>
     </div>
 </div>
+
+<script src="../public/js/conf.js"></script>

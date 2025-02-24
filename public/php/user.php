@@ -2,8 +2,6 @@
 
 include '../control/alert.php';
 include '../control/infoSess.php';
-include '../control/affPost.php';
-include '../control/affStt.php';
 ?>
 
 <style>
@@ -42,7 +40,7 @@ include '../control/affStt.php';
                 <div></div>
             </div>
             <?php
-                $conU = "posteU != 5 AND statutU = 'ON' OR statutU = 'OFF'";
+                $conU = "posteU != 5 AND (serviceU = $service OR serviceU = 3) AND statutU != 'DEL'";
                 $donU = recupDon('users', $conU);
 
                 foreach ($donU as $user) {

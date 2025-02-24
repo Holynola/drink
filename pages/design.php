@@ -2,6 +2,8 @@
 
 session_start();
 
+include 'checkSession.php';
+
 include '../control/dbConf.php';
 include '../control/recupAll.php';
 include '../control/infoSess.php';
@@ -10,6 +12,8 @@ include '../control/addHour.php';
 include '../control/affPost.php';
 include '../control/affStt.php';
 include '../control/affWork.php';
+include '../control/sumAll.php';
+include '../control/comptAll.php';
 
 function monModel($titre, $page) {
 
@@ -132,18 +136,36 @@ echo <<<HTML
             </li>
 
             <li>
-                <a href="#">
+                <a href="history.php">
                     <i class="fa-solid fa-globe"></i>
                     <span class="link_name">Historique</span>
                 </a>
                 <span class="tooltip">Historique</span>
             </li>
 
+            <li>
+                <a href="index.php">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    <span class="link_name">Revenir à l'accueil</span>
+                </a>
+                <span class="tooltip">Revenir à l'acceuil</span>
+            </li>
+
             <li class="profile">
                 <div class="profile_details">
                     <div class="profile_content">
-                        <div class="name">Dev Appli</div>
-                        <div class="designation">Admin</div>
+                        <div class="name">
+HTML;
+                            global $nom; global $prenoms;
+                            echo $nom . ' ' . $prenoms;
+echo <<<HTML
+                        </div>
+                        <div class="designation">
+HTML;
+                            global $poste;
+                            affPoste($poste);
+echo <<<HTML
+                        </div>
                     </div>
                 </div>
                 <i class="fa-solid fa-right-from-bracket" id="log_out"></i>
@@ -157,9 +179,10 @@ HTML;
 require_once "$page";
 
 echo <<<HTML
-    </div>
+    </div>   
 
     <script src="../public/js/compte.js"></script>
+    <script src="../public/js/deconnect.js"></script>
 </body>
 </html>
 HTML;

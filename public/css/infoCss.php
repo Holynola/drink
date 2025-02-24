@@ -84,5 +84,115 @@
     align-items: center;
 }
 
+form {
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+form div {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+form label {
+    font-size: 18px;
+}
+
+form select,
+form input {
+    width: 100%;
+    padding: 3px 8px;
+    font-weight: 550;
+    margin-top: 5px;
+    font-size: 16px;
+}
+
+.all-btn {
+    width: 100%;
+}
+
+.btn-div {
+    text-align: center;
+    margin: 10px 0 25px;
+}
+
+.btn-div button,
+.btn-div a {
+    background: none;
+    border-radius: 3px;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    color: var(--noir);
+    text-decoration: underline;
+}
+
+.btn-div a.red:focus,
+.btn-div a.red:hover {
+    color: var(--rouge);
+}
+
+.btn-div button.blue:focus,
+.btn-div button.blue:hover {
+    color: var(--bleu);
+}
+
+.btn-div a.green:focus,
+.btn-div a.green:hover,
+.btn-div button.green:focus,
+.btn-div button.green:hover {
+    color: var(--vert);
+}
+
+.btn-div button.orange:focus,
+.btn-div button.orange:hover {
+    color: var(--orange);
+}
+
+@media (max-width: 1000px) {
+    .info {
+        width: 100%;
+    }
+}
+
+@media (max-width: 860px) {
+    .info {
+        flex-direction: column;
+    }
+
+    .info-left,
+    .info-right {
+        width: 100%;
+    }
+
+    .info-right {
+        padding-top: 20px;
+    }
+}
+
+@media (max-width: 400px) {  
+    .left-box span {
+        font-size: 18px;
+    }
+
+    .left-mdf h5 {
+        font-size: 18px;
+    }
+
+    .mdf-left,
+    .mdf-right {
+        font-size: 16px;
+    }
+
+    form label {
+        font-size: 16px;
+    }
+
+    .btn-div button,
+    .btn-div a {
+        font-size: 16px;
+    }
+}
 
 </style>

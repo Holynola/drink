@@ -19,11 +19,7 @@ if (isset($_POST['username']) && ($_POST['password'])) {
     if ($resultat && password_verify($motdepasse, $resultat['passU'])) {
 
         if ($resultat['statutU'] == 'ON') {
-
-            if ($resultat['serviceU'] != 3) {
-                $_SESSION["service"] = $resultat["serviceU"];
-            }
-
+            $_SESSION["service"] = $resultat["serviceU"];
             $_SESSION["idUser"] = $resultat['idU'];
             $_SESSION["titre"] = $resultat['titleU'];
             $_SESSION["nom"] = $resultat['nomU'];

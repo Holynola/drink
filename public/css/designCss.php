@@ -248,7 +248,7 @@
     position: relative;
     min-height: 100vh;
     top: 0;
-    left: 78px;
+    left: 60px;
     width: calc(100% - 78px);
     padding: 10px 10px 10px 25px;
     transition: all 0.5s ease;
