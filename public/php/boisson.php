@@ -1,7 +1,8 @@
 <?php
+include '../control/alert.php';
 include '../control/infoSess.php';
 
-include '../public/css/BoissonCss.php'; 
+include '../public/css/boissonCss.php'; 
 ?>
 
 <div class="top">
@@ -24,15 +25,33 @@ include '../public/css/BoissonCss.php';
 
 <div class="content">
     <div class="drink">
+        <?php
+            $conB = "serviceB = $service AND statutB = 'ON' ORDER BY designB ASC";
+            $donB = recupDon('boisson', $conB);
+
+            foreach ($donB as $bs) {
+        ?>
         <div class="drink-card">
             <div class="drink-img">
-                <img src="../src/img/Awa.jpg" alt="Boisson">
+                <img src="../src/boisson/<?= $bs['imageB']; ?>" alt="<?= $bs['imageB']; ?>">
             </div>
             <div class="drink-txt">
-                <span>Nom de la boisson</span>
-                <div>Prix de vente : <span>50 000 FCFA</span></div>
-                <div>En Stock : <span>50 Bouteilles</span></div>
+                <span><?= $bs['designB']; ?></span>
+                <div>
+                    Prix de vente :<br>
+                    <span>
+                        <?php
+                            $prixv = $bs['prixvB'];
+                            $prixvB = number_format($prixv, 0, ' ', ' ') . ' FCFA';
+                            echo $prixvB;
+                        ?>
+                    </span>
+                </div>
+                <div>
+                    <a href="infosBoisson.php?idB=<?= $bs['idB']; ?>" class="btn-small">Plus d'infos</a>
+                </div>
             </div>
         </div>
+        <?php } ?>
     </div>
 </div>

@@ -13,6 +13,10 @@
     margin: 0 10px 20px;
 }
 
+.drink-card div {
+    line-height: 23px;
+}
+
 .drink-img {
     width: 100%;
     height: 130px;

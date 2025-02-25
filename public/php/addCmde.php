@@ -13,14 +13,21 @@ include '../public/css/addCmdeCss.php';
 
 <div class="content">
     <div class="cmd">
-        <div class="cmd-left">
+        <div class="cmd-left" id="tab">
             <div class="user">
                 <div class="r-info" style="line-height: 28px;">
                     <div>
                         <label for="getName">Choisir la boisson</label>
                             <select name="getName" id="getName" required>
                                 <option value=""></option>
-                                
+                                <?php
+                                    $conB = "serviceB = $service AND statutB = 'ON' ORDER BY designB ASC";
+                                    $donB = recupDon('boisson', $conB);
+
+                                    foreach ($donB as $bs) {
+                                ?>
+                                <option value="<?= $bs['idB']; ?>"><?= $bs['designB']; ?></option>
+                                <?php } ?>
                             </select>
                     </div>
 
@@ -35,57 +42,22 @@ include '../public/css/addCmdeCss.php';
                     </div>
 
                     <div style="margin: 20px 0 30px;">
-                        <a href="#" class="btn-link">Ajouter</a>
+                        <a href="#" id="ajouter" class="btn-link">Ajouter</a>
                     </div>
-                </div>
-            </div>
-
-            <div class="info-cmd">
-                <div>
-                    <span>Boisson :</span>
-                    <p>Chill</p>
-                </div>
-                <div class="red">
-                    <span>Prix du casier/carton :</span>
-                    <p>3500 FCFA</p>
-                </div>
-                <div>
-                    <span>Quantité :</span>
-                    <p>10</p>
-                </div>
-                <div class="red">
-                    <span>Montant</span>
-                    <p>35 000 FCFA</p>
-                </div>
-            </div>
-
-            <div class="info-cmd">
-                <div>
-                    <span>Boisson :</span>
-                    <p>Chill</p>
-                </div>
-                <div class="red">
-                    <span>Prix du casier/carton :</span>
-                    <p>3500 FCFA</p>
-                </div>
-                <div>
-                    <span>Quantité :</span>
-                    <p>10</p>
-                </div>
-                <div class="red">
-                    <span>Montant</span>
-                    <p>35 000 FCFA</p>
                 </div>
             </div>
         </div>
 
+        <!-- Champ caché pour stocker les données des lignes ajoutées -->
+        <input type="hidden" name="lignes" id="lignes">
+
         <div class="cmd-right">
             <div class="user">
                 <div class="r-info">
-                    <form action="#">
+                    <form action="../control/addCmd.php" id="commandeForm" method="post">
                         <div>
                             <label for="mtt">Montant total</label><br>
-                            <input type="text" name="mtt" id="mtt" class="currency" autocomplete="off" required>
+                            <input type="text" name="mtt" id="mtt" class="currency" autocomplete="off" readonly required>
                         </div>
 
                         <div>
@@ -97,7 +69,14 @@ include '../public/css/addCmdeCss.php';
                             <label for="four">Fournisseur</label><br>
                             <select name="four" id="four" required>
                                 <option value=""></option>
-                                
+                                <?php
+                                    $conF = "statutF = 'ON'";
+                                    $donF = recupDon('fournisseur', $conF);
+
+                                    foreach ($donF as $four) {
+                                ?>
+                                <option value="<?= $four['idF'] ?>"><?= $four['nomF']; ?></option>
+                                <?php } ?>
                             </select>
                         </div>
 
@@ -110,7 +89,14 @@ include '../public/css/addCmdeCss.php';
                             <label for="madeby">Effectuée par</label><br>
                             <select name="madeby" id="madeby" required>
                                 <option value=""></option>
-                                
+                                <?php
+                                    $conU = "posteU != 5 AND statutU != 'DEL'";
+                                    $donU = recupDon('users', $conU);
+
+                                    foreach ($donU as $us) {
+                                ?>
+                                <option value="<?= $us['idU']; ?>"><?= $us['nomU'] . ' ' . $us['prenomsU']; ?></option>
+                                <?php } ?>
                             </select>
                         </div>
 
@@ -128,3 +114,5 @@ include '../public/css/addCmdeCss.php';
         </div>
     </div>
 </div>
+
+<script src="../public/js/affCmd.js"></script>

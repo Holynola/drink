@@ -1,5 +1,6 @@
 <?php
 
+include '../control/alert.php';
 include '../control/infoSess.php';
 ?>
 <style>
@@ -38,16 +39,76 @@ include '../control/infoSess.php';
                 <div>Effectuée par</div>
                 <div></div>
             </div>
+            <?php
+                $conC = "serviceC = $service";
+                $donC = recupDon('commande', $conC);
+
+                foreach ($donC as $cmd) {
+            ?>
             <div class="all-div atr">
-                <div>19 Février 2025</div>
-                <div>50 000 FCFA</div>
-                <div>40 000 FCFA</div>
-                <div>10 000 FCFA</div>
-                <div>Axel Jean</div>
+                <!-- Date de commande -->
+                <div>
+                    <?php
+                        $datemade = $cmd['datemadeC'];
+                        $dateFR = extraireDateFR($datemade);
+                        echo $dateFR;
+                    ?>
+                </div>
+                
+                <!-- Montant total -->
+                <div>
+                    <?php
+                        $mont = $cmd['mttC'];
+                        $mtt = number_format($mont, 0, ' ', ' ') . ' FCFA';
+                        echo $mtt;
+                    ?>
+                </div>
+
+                <!-- Montant réglé -->
+                <div>
+                    <?php
+                        $reg = $cmd['mtrC']; // Premier montant réglé
+                        
+                        // Autres paiements
+                        $id = $cmd['idC'];
+                        $conP = "idTablePay = $id AND tablePay = 'commande'";
+                        $pay = sumDon('paiement', 'mttPay', $conP);
+                        
+                        $montr = $reg + $pay;
+                        $mtr = number_format($montr, 0, ' ', ' ') . ' FCFA';
+                        echo $mtr;
+                    ?>
+                </div>
+
+                <!-- Reste à régler -->
+                <div>
+                    <?php
+                        $reste = $mont - $montr;
+                        $rar = number_format($reste, 0, ' ', ' ') . ' FCFA';
+                        echo $rar;
+                    ?>
+                </div>
+
+                <!-- Effectué par -->
+                <div>
+                    <?php
+                        $auteurN = $cmd['madebyC'];
+                        $cond = "idU = $auteurN";
+                        $donU = recupDon('users', $cond);
+
+                        if ($donU) {
+                            foreach ($donU as $auteur) {
+                                echo $auteur['nomU'] . ' ' . $auteur['prenomsU'];
+                            }
+                        }
+                    ?>
+                </div>
+
                 <div>
                     <a href="#">Plus de détails</a>
                 </div>
             </div>
+            <?php } ?>
         </div>
     </div>
 </div>

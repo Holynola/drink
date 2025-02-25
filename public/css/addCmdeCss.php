@@ -4,13 +4,12 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
     flex-wrap: wrap;
 }
 
 .cmd-left {
     width: 500px;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 
 .cmd-left h5 {
@@ -29,10 +28,17 @@
     width: calc(100% / 2);
     padding: 10px 5px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     text-align: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.info-cmd div p {
+    margin: 0;
+}
+
+.info-cmd span, .info-cmd p {
+    vertical-align: middle;
 }
 
 .left-content {

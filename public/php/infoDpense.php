@@ -5,7 +5,7 @@ include '../control/infoSess.php';
 if (isset($_GET['idDp'])) {
     $id = $_GET['idDp'];
 } else {
-    header("Location: ../users.php");
+    header("Location: depenses.php");
 }
 
 include '../public/css/infoCss.php';

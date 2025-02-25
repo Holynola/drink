@@ -96,7 +96,7 @@ echo <<<HTML
             </li>
 
             <li>
-                <a href="Boissons.php">
+                <a href="boissons.php">
                     <i class="fa-solid fa-champagne-glasses"></i>
                     <span class="link_name">Boissons</span>
                 </a>
