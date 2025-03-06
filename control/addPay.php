@@ -9,9 +9,11 @@ if (isset($_POST['mtt']) && ($_POST['madeby'])) {
     $mtt = $_POST['mtt'];
     $mttPay = mttConversion($mtt);
 
+    // Récupératin de la table
+    $tablePay = $_GET['pay'];
+
     $servicePay = $_SESSION['service'];
     $idTablePay = $_GET['idp'];
-    $tablePay = 'depense';
     $madebyPay = $_POST['madeby'];
     $datemadePay = $_POST['datemade'];
     $savebyPay = $_SESSION['idUser'];
@@ -32,19 +34,32 @@ if (isset($_POST['mtt']) && ($_POST['madeby'])) {
 
     try {
         $stmt->execute();
-        
-        $message = "Votre paiement a bien été enregistré.";
-        $url = "../pages/dpnses.php?msg=" . urldecode($message);
-        header("Location: " . $url);
-        exit;
+
+        if ($tablePay == 'commande') {
+            $message = "Votre paiement a bien été enregistré.";
+            $url = "../pages/cmdes.php?msg=" . urldecode($message);
+            header("Location: " . $url);
+            exit;
+        } else {
+            $message = "Votre paiement a bien été enregistré.";
+            $url = "../pages/dpnses.php?msg=" . urldecode($message);
+            header("Location: " . $url);
+            exit;
+        }
 
     } catch (PDOException $e) {
-        $mess = "Erreur ! Veuillez réessayer plus tard";
-        $urls = '../pages/dpnses.php?msg=' . urldecode($mess);
-        die("Error executing SQL query: " . $e->getMessage());
+        if ($tablePay) {
+            $mess = "Erreur ! Veuillez réessayer plus tard";
+            $urls = '../pages/cmdes.php?msg=' . urldecode($mess);
+            die("Error executing SQL query: " . $e->getMessage());
+        } else {
+            $mess = "Erreur ! Veuillez réessayer plus tard";
+            $urls = '../pages/dpnses.php?msg=' . urldecode($mess);
+            die("Error executing SQL query: " . $e->getMessage());
+        }
     }
 
 } else {
-    header("Location: ../pages/dpnses.php");
+    header("Location: ../pages/tdb.php");
     exit;
 }

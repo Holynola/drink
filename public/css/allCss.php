@@ -29,13 +29,7 @@
 @media (max-width: 1200px) {
     .content {
         width: 100%;
-        padding: 0 20px;
-    }
-}
-
-@media (max-width: 500px) {
-    .content {
-        padding: 0 10px;
+        padding: 0 5px;
     }
 }
 

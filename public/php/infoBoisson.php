@@ -114,7 +114,7 @@ include '../public/css/infoCss.php';
             
             <?php if ($kit == 'yes') { // Si la boisson est vendu en kit ?>
             <div class="left-box">
-                <span>Prix du kit</span>
+                <span>Prix du kit :</span>
                 <span>
                     <?php
                         $prixkit = $bs['prixkitB'];

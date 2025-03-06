@@ -18,6 +18,7 @@ function addStock($serviceSt, $BoissonSt, $qteSt, $cmdSt, $nbrebtleSt, $nbrecars
                 nbrecarsSt, 
                 prixcSt, 
                 prixaSt, 
+                savebySt, 
                 datesaveSt
             ) VALUES (
                 :serviceSt, 
@@ -27,6 +28,7 @@ function addStock($serviceSt, $BoissonSt, $qteSt, $cmdSt, $nbrebtleSt, $nbrecars
                 :nbrebtleSt, 
                 :nbrecarsSt, 
                 :prixcSt, 
+                NULL, 
                 NULL, 
                 :datesaveSt
             )";

@@ -3,9 +3,10 @@
 include '../control/alert.php';
 include '../control/infoSess.php';
 ?>
+
 <style>
 
-.all-div div:nth-child(2) {
+.all-div div:nth-child(3) {
     color: var(--rouge);
 }
 
@@ -16,15 +17,15 @@ include '../control/infoSess.php';
 </style>
 
 <div class="top">
-    <i class="fa-solid fa-handshake-simple"></i>
-    <h4>Commandes | <?= $lieu; ?></h4>
+    <i class="fa-solid fa-sack-dollar"></i>
+    <h4>Inventaires | <?= $lieu; ?></h4>
 </div>
 
 <div class="add-tri">
     <?php include 'triDiv.php'; ?>
 
     <div class="add-btn">
-        <a href="addCmdes.php" class="btn-link">Ajouter une commande</a>
+        <a href="addIvents.php" class="btn-link">Faire un inventaire</a>
     </div>
 </div>
 
@@ -32,55 +33,48 @@ include '../control/infoSess.php';
     <div class="content">
         <div class="all-content">
             <div class="all-div ett">
-                <div>Date de commande</div>
-                <div>Montant total</div>
-                <div>Montant réglé</div>
-                <div>Rester à régler</div>
-                <div>Effectuée par</div>
+                <div>Date d'inventaire</div>
+                <div>Montant recette</div>
+                <div>Montant reçu</div>
+                <div>Différence</div>
+                <div>Effectué par</div>
                 <div></div>
             </div>
             <?php
-                $conC = "serviceC = $service";
-                $donC = recupDon('commande', $conC);
+                $conI = "serviceV = $service";
+                $donI = recupDon('inventory', $conI);
 
-                foreach ($donC as $cmd) {
+                foreach ($donI as $iv) {
             ?>
             <div class="all-div atr">
-                <!-- Date de commande -->
+                <!-- Date d'inventaire -->
                 <div>
                     <?php
-                        $datemade = $cmd['datemadeC'];
+                        $datemade = $iv['datemadeV'];
                         $dateFR = extraireDateFR($datemade);
                         echo $dateFR;
                     ?>
                 </div>
                 
-                <!-- Montant total -->
+                <!-- Montant recette -->
                 <div>
                     <?php
-                        $mont = $cmd['mttC'];
+                        $mont = $iv['mttV'];
                         $mtt = number_format($mont, 0, ' ', ' ') . ' FCFA';
                         echo $mtt;
                     ?>
                 </div>
-
-                <!-- Montant réglé -->
+                
+                <!-- Montant reçu -->
                 <div>
                     <?php
-                        $reg = $cmd['mtrC']; // Premier montant réglé
-                        
-                        // Autres paiements
-                        $id = $cmd['idC'];
-                        $conP = "idTablePay = $id AND tablePay = 'commande'";
-                        $pay = sumDon('paiement', 'mttPay', $conP);
-                        
-                        $montr = $reg + $pay;
+                        $montr = $iv['mtrV'];
                         $mtr = number_format($montr, 0, ' ', ' ') . ' FCFA';
                         echo $mtr;
                     ?>
                 </div>
-
-                <!-- Reste à régler -->
+                
+                <!-- Différence -->
                 <div>
                     <?php
                         $reste = $mont - $montr;
@@ -88,11 +82,11 @@ include '../control/infoSess.php';
                         echo $rar;
                     ?>
                 </div>
-
+                
                 <!-- Effectué par -->
                 <div>
                     <?php
-                        $auteurN = $cmd['madebyC'];
+                        $auteurN = $iv['madebyV'];
                         $cond = "idU = $auteurN";
                         $donU = recupDon('users', $cond);
 
@@ -103,9 +97,9 @@ include '../control/infoSess.php';
                         }
                     ?>
                 </div>
-
+                
                 <div>
-                    <a href="infosCmde.php?id=<?= $cmd['idC']; ?>">Plus de détails</a>
+                    <a href="infosVent.php?id=<?= $iv['idV']; ?>">Plus de détails</a>
                 </div>
             </div>
             <?php } ?>
@@ -115,13 +109,13 @@ include '../control/infoSess.php';
 
 <!-- Recap -->
 <div class="recap">
-    <h5>Récapitulatif des Commandes</h5>
+    <h5>Récapitulatif des Inventaires</h5>
 
     <div>
-        Montant total des commandes :
+        Montant total des recettes :
         <b class="red">
             <?php
-                $sumMtt = sumDon('commande', 'mttC', $conC);
+                $sumMtt = sumDon('inventory', 'mttV', $conI);
                 $totalMtt = number_format($sumMtt, 0, ' ', ' ') . ' FCFA';
                 echo $totalMtt;
             ?>
@@ -129,15 +123,10 @@ include '../control/infoSess.php';
     </div>
 
     <div>
-        Montant total des règlements :
+        Montant total reçu :
         <b class="red">
             <?php
-                $sumMtrf = sumDon('commande', 'mtrC', $conC); // Premiers paiements
-                // Autres paiements
-                $conA = "servicePay = $service AND tablePay = 'commande'";
-                $sumMtra = sumDon('paiement', 'mttPay', $conA); 
-
-                $sumMtr = $sumMtrf + $sumMtra;
+                $sumMtr = sumDon('inventory', 'mtrV', $conI);
                 $totalMtr = number_format($sumMtr, 0, ' ', ' ') . ' FCFA';
                 echo $totalMtr;
             ?>

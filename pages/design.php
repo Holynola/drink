@@ -80,11 +80,11 @@ echo <<<HTML
             </li>
 
             <li>
-                <a href="ventes.php">
+                <a href="invents.php">
                     <i class="fa-solid fa-sack-dollar"></i>
-                    <span class="link_name">Ventes</span>
+                    <span class="link_name">Inventaires</span>
                 </a>
-                <span class="tooltip">Ventes</span>
+                <span class="tooltip">Inventaires</span>
             </li>
 
             <li>
@@ -101,6 +101,14 @@ echo <<<HTML
                     <span class="link_name">Boissons</span>
                 </a>
                 <span class="tooltip">Boissons</span>
+            </li>
+
+            <li>
+                <a href="consigns.php">
+                    <i class="fa-solid fa-lock"></i>
+                    <span class="link_name">Consignations</span>
+                </a>
+                <span class="tooltip">Consignations</span>
             </li>
 
             <li>

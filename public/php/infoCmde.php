@@ -2,10 +2,10 @@
 
 include '../control/infoSess.php';
 
-if (isset($_GET['idDp'])) {
-    $id = $_GET['idDp'];
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
 } else {
-    header("Location: depenses.php");
+    header("Location: cmdes.php");
 }
 
 include '../public/css/infoCss.php';
@@ -20,28 +20,28 @@ $point; // Récupérer la valeur de la colonne point
 <div class="info">
     <div class="info-left">
         <?php
-            $montantDp;
-            $conD = "idDp = $id";
-            $donD = recupDon('depense', $conD);
+            $montantC;
+            $conC = "idC = $id";
+            $donC = recupDon('commande', $conC);
 
-            foreach ($donD as $dp) {
+            foreach ($donC as $cmd) {
         ?>
         <div class="left-content">
             <div class="left-box">
                 <span>Lieu de travail :</span>
                 <span>
                     <?php
-                        $service = $dp['serviceDp'];
+                        $service = $cmd['serviceC'];
                         affService($service);
                     ?>
                 </span>
             </div>
 
             <div class="left-box">
-                <span>Montant :</span>
+                <span>Montant total :</span>
                 <span>
                     <?php
-                        $mont = $dp['mttDp'];
+                        $mont = $cmd['mttC'];
                         $mtt = number_format($mont, 0, ' ', ' ') . ' FCFA';
                         echo $mtt;
                     ?>
@@ -49,15 +49,29 @@ $point; // Récupérer la valeur de la colonne point
             </div>
 
             <div class="left-box">
-                <span>Détails :</span>
-                <span><?= $dp['detailDp']; ?></span>
+                <span>Fournisseur :</span>
+                <span>
+                    <?php
+                        $four = $cmd['fourC'];
+                        $conF = "idF = $four";
+                        $donF = recupDon('fournisseur', $conF);
+                        foreach ($donF as $fr) {
+                            echo $fr['nomF'];
+                        }
+                    ?>
+                </span>
+            </div>
+
+            <div class="left-box">
+                <span>Facture :</span>
+                <span><?= $cmd['factureC']; ?></span>
             </div>
 
             <div class="left-box">
                 <span>Effectuée par :</span>
                 <span>
                     <?php
-                        $madeby = $dp['madebyDp'];
+                        $madeby = $cmd['madebyC'];
                         $conUs = "idU = $madeby";
                         $donUs = recupDon('users', $conUs);
                         foreach ($donUs as $us) {
@@ -68,10 +82,10 @@ $point; // Récupérer la valeur de la colonne point
             </div>
 
             <div class="left-box">
-                <span>Date de dépense :</span>
+                <span>Date de commande :</span>
                 <span>
                     <?php
-                        $dateMade = $dp['datemadeDp'];
+                        $dateMade = $cmd['datemadeC'];
                         $dateFR = extraireDateFR($dateMade);
                         echo $dateFR;
                     ?>
@@ -85,7 +99,7 @@ $point; // Récupérer la valeur de la colonne point
                 <span>Enregistrée par :</span>
                 <span>
                     <?php
-                        $saveby = $dp['savebyDp'];
+                        $saveby = $cmd['savebyC'];
                         $conUs = "idU = $saveby";
                         $donUs = recupDon('users', $conUs);
                         foreach ($donUs as $us) {
@@ -99,7 +113,7 @@ $point; // Récupérer la valeur de la colonne point
                 <span>Date d'enregistrement :</span>
                 <span>
                     <?php
-                        $dateEnr = $dp['datesaveDp'];
+                        $dateEnr = $cmd['datesaveC'];
                         $dateF = extraireDateFR($dateEnr);
                         
                         $heureF = addHeure($dateEnr);
@@ -109,28 +123,28 @@ $point; // Récupérer la valeur de la colonne point
                 </span>
             </div>
         </div>
-        <?php 
-                $montantDp = $dp['mttDp'];
-                $point = $dp['pointDp']; 
+        <?php
+                $montantC = $cmd['mttC'];
+                $point = $cmd['pointC']; 
             } 
         ?>
 
         <div class="left-mdf">
             <h5>Paiements :</h5>
-            
+
             <?php
                 $mtrgle; // Premier paiement
-                $conM = "idDp = $id";
-                $donM = recupDon('depense', $conM);
+                $conM = "idC = $id";
+                $donM = recupDon('commande', $conM);
 
                 foreach ($donM as $mtr) {
-                    if ($mtr['mtrDp'] > 0) {
+                    if ($mtr['mtrC'] > 0) {
             ?>
             <div class="mdf-content">
                 <div class="mdf-left">
                     <span class="title">
                         <?php
-                            $dateEnr = $mtr['datemadeDp'];
+                            $dateEnr = $mtr['datemadeC'];
                             $dateF = extraireDateFR($dateEnr);
                             echo $dateF;
                         ?>
@@ -140,7 +154,7 @@ $point; // Récupérer la valeur de la colonne point
                     <span class="title">Montant réglé :</span><br>
                     <span class="perso">
                         <?php
-                            $montr = $mtr['mtrDp'];
+                            $montr = $mtr['mtrC'];
                             $mttr = number_format($montr, 0, ' ', ' ') . ' FCFA';
                             echo $mttr;
                         ?>
@@ -149,7 +163,7 @@ $point; // Récupérer la valeur de la colonne point
                     <span class="title">Effectué par :</span><br>
                     <span class="perso">
                         <?php
-                            $auteurN = $mtr['madebyDp'];
+                            $auteurN = $mtr['madebyC'];
                             $cond = "idU = $auteurN";
                             $donU = recupDon('users', $cond);
 
@@ -163,14 +177,14 @@ $point; // Récupérer la valeur de la colonne point
                 </div>
             </div>
             <?php
-                        $mtrgle = $mtr['mtrDp'];
+                        $mtrgle = $mtr['mtrC'];
                     }
                 } 
             ?>
 
             <!-- Récypération des autres paiemens -->
             <?php
-                $conP = "idTablePay = $id AND tablePay = 'depense'";
+                $conP = "idTablePay = $id AND tablePay = 'commande'";
                 $donP = recupDon('paiement', $conP);
 
                 if ($donP) {
@@ -243,7 +257,7 @@ $point; // Récupérer la valeur de la colonne point
                 <span>Reste à régler :</span>
                 <span>
                     <?php
-                        $reste = $montantDp - $totalPay;
+                        $reste = $montantC - $totalPay;
                         $rarPay = number_format($reste, 0, ' ', ' ') . ' FCFA';
                         echo $rarPay;
                     ?>
@@ -254,7 +268,7 @@ $point; // Récupérer la valeur de la colonne point
         <!-- Séparateur -->
         <div class="left-sep"></div>
 
-        <form action="../control/addPay.php?idp=<?=$id;?>&pay=depense" method="post" id="mdfDpse" style="display: none;">
+        <form action="../control/addPay.php?idp=<?=$id;?>&pay=commande" method="post" id="mdfDpse" style="display: none;">
             <div>
                 <label for="mtt">Montant réglé</label><br>
                 <input type="text" name="mtt" id="mtt" class="currency" autocomplete="off" required>
@@ -293,7 +307,7 @@ $point; // Récupérer la valeur de la colonne point
 
         <?php if ($point == null) { ?>
         <div class="btn-div">
-            <a href="../control/delDpnse.php?idDp=<?= $id; ?>" onclick="return confirmLink()" class="red">Supprimer la dépense</a>
+            <a href="../control/delCmde.php?idC=<?= $id; ?>" onclick="return confirmLink()" class="red">Supprimer la commande</a>
         </div>
         <?php } ?>
     </div>
