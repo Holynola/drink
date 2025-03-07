@@ -10,6 +10,8 @@ include '../control/infoSess.php';
 include '../control/affDate.php';
 include '../control/addHour.php';
 include '../control/affPost.php';
+include '../control/affCont.php';
+include '../control/affEmb.php';
 include '../control/affStt.php';
 include '../control/affWork.php';
 include '../control/sumAll.php';

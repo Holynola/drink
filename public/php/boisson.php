@@ -33,7 +33,7 @@ include '../public/css/boissonCss.php';
         ?>
         <div class="drink-card">
             <div class="drink-img">
-                <img src="../src/boisson/<?= $bs['imageB']; ?>" alt="<?= $bs['imageB']; ?>">
+                <img src="/boisson/<?= $bs['imageB']; ?>" alt="<?= $bs['imageB']; ?>">
             </div>
             <div class="drink-txt">
                 <span><?= $bs['designB']; ?></span>

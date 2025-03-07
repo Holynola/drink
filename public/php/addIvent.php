@@ -8,7 +8,6 @@ include '../public/css/addIventCss.php';
 ?>
 
 <div class="top">
-    <i class="fa-solid fa-sack-dollar"></i>
     <h4>Faire un inventaire | <?= $lieu; ?></h4>
 </div>
 
@@ -17,7 +16,7 @@ include '../public/css/addIventCss.php';
 <div class="content">
     <div class="vent">
         <table id="tableVentes">
-            <tbody>
+            <thead>
                 <tr>
                     <th>Boisson</th>
                     <th>Stock initial</th>
@@ -26,7 +25,7 @@ include '../public/css/addIventCss.php';
                     <th>Produits vendus</th>
                     <th>Montants</th>
                 </tr>
-            </tbody>
+            </thead>
             <tbody>
                 <?php
                     $conS = "SELECT 

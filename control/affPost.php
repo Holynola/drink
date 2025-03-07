@@ -19,6 +19,6 @@ function affPoste($poste) {
         }
     } else {
         // Aucun poste trouvé
-        echo "Aucun poste trouvé pour les identifiants fournis.\n";
+        echo "Aucun poste trouvé pour l'identifiant fourni.\n";
     }
 }

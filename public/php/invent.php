@@ -68,7 +68,14 @@ include '../control/infoSess.php';
                 <!-- Montant reçu -->
                 <div>
                     <?php
-                        $montr = $iv['mtrV'];
+                        $reg = $iv['mtrV']; // Montant reçu
+
+                        // Autres réglements
+                        $id = $iv['idV'];
+                        $conR = "ventR = $id AND serviceR = $service";
+                        $pay = sumDon('reglement', 'mttR', $conR);
+
+                        $montr = $reg + $pay;
                         $mtr = number_format($montr, 0, ' ', ' ') . ' FCFA';
                         echo $mtr;
                     ?>
@@ -126,7 +133,13 @@ include '../control/infoSess.php';
         Montant total reçu :
         <b class="red">
             <?php
-                $sumMtr = sumDon('inventory', 'mtrV', $conI);
+                $sumMtrf = sumDon('inventory', 'mtrV', $conI); // Montants reçus
+
+                // Autres règlements
+                $conA = "serviceR = $service";
+                $sumMtra = sumDon('reglement', 'mttR', $conA);
+
+                $sumMtr = $sumMtrf + $sumMtra;
                 $totalMtr = number_format($sumMtr, 0, ' ', ' ') . ' FCFA';
                 echo $totalMtr;
             ?>

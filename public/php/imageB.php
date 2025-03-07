@@ -14,7 +14,7 @@
 <div class="images-container">
     <?php
     // Chemin du dossier contenant les images
-    $dossierImages = "../src/boisson/"; // Remplacez par le chemin de votre dossier
+    $dossierImages = "../../boisson/"; // Remplacez par le chemin de votre dossier
 
     // Vérifier si le dossier existe
     if (is_dir($dossierImages)) {

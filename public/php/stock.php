@@ -131,7 +131,7 @@ include '../control/recupStk.php';
                 </div>
                 
                 <div>
-                    <a href="infosStock.php?idSt=<?= $stk['BoissonSt']; ?>">Plus de détails</a>
+                    <a href="infosStock.php?idB=<?= $stk['BoissonSt']; ?>&design=<?= $stk['designB']; ?>">Plus de détails</a>
                 </div>
             </div>
             <?php } ?>

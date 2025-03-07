@@ -5,6 +5,11 @@
     margin: 0 auto 50px;
 }
 
+.vent h5 {
+    font-size: 24px;
+    margin: 25px 0;
+}
+
 table, th, td {
   border: 1px solid black;
 }
@@ -52,6 +57,10 @@ td input::-webkit-inner-spin-button {
 }
 
 @media (max-width: 650px) {
+    .vent h5 {
+        font-size: 18px;
+        text-align: center;
+    }
     th, td {
         font-size: 14px;
     }

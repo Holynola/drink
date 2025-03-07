@@ -26,4 +26,8 @@ $(document).ready(function() {
     $("#btnDpse").click(function() {
         $("#mdfDpse").toggle();
     });
+
+    $("#btnReg").click(function() {
+        $("#mdfReg").toggle();
+    });
 });
