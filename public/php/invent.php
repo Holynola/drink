@@ -147,7 +147,7 @@ include '../control/infoSess.php';
     </div>
 
     <div>
-        Reste total à régler :
+        Différence totale :
         <b class="blue">
             <?php
                 $sumRes = $sumMtt - $sumMtr;

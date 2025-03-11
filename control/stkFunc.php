@@ -5,6 +5,8 @@ function addStock($serviceSt, $BoissonSt, $qteSt, $cmdSt, $nbrebtleSt, $nbrecars
     // Inclusion du fichier de configuration de la base de données
     include 'dbConf.php';
 
+    $venduSt = 0; // Quantité vendue
+
     // Récupération de la date et de l'heure actuelles
     $datesaveSt = date('Y-m-d H:i:s');
 
@@ -13,6 +15,7 @@ function addStock($serviceSt, $BoissonSt, $qteSt, $cmdSt, $nbrebtleSt, $nbrecars
                 serviceSt, 
                 BoissonSt, 
                 qteSt, 
+                venduSt,
                 cmdSt, 
                 nbrebtleSt, 
                 nbrecarsSt, 
@@ -24,6 +27,7 @@ function addStock($serviceSt, $BoissonSt, $qteSt, $cmdSt, $nbrebtleSt, $nbrecars
                 :serviceSt, 
                 :BoissonSt, 
                 :qteSt, 
+                :venduSt, 
                 :cmdSt, 
                 :nbrebtleSt, 
                 :nbrecarsSt, 
@@ -40,6 +44,7 @@ function addStock($serviceSt, $BoissonSt, $qteSt, $cmdSt, $nbrebtleSt, $nbrecars
     $stmt->bindParam(':serviceSt', $serviceSt);
     $stmt->bindParam(':BoissonSt', $BoissonSt);
     $stmt->bindParam(':qteSt', $qteSt);
+    $stmt->bindParam(':venduSt', $venduSt);
     $stmt->bindParam(':cmdSt', $cmdSt);
     $stmt->bindParam(':nbrebtleSt', $nbrebtleSt);
     $stmt->bindParam(':nbrecarsSt', $nbrecarsSt);

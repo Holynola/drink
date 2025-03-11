@@ -30,19 +30,19 @@ $(document).ready(function() {
         var newDiv = `
             <div class="info-cmd">
                 <div>
-                    <span>Boisson :</span>
+                    <span>Boisson</span>
                     <p>${boissonText}</p> <!-- Afficher le texte de l'option -->
                 </div>
                 <div class="red">
-                    <span>Prix du casier/carton :</span>
+                    <span>Prix du casier/carton</span>
                     <p>${prix} FCFA</p>
                 </div>
                 <div>
-                    <span>Quantité :</span>
+                    <span>Quantité</span>
                     <p>${quantite}</p>
                 </div>
                 <div class="red">
-                    <span>Montant :</span>
+                    <span>Montant</span>
                     <p>${montant} FCFA</p>
                 </div>
             </div>

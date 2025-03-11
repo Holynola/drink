@@ -12,7 +12,7 @@ include '../public/css/infoCss.php';
 ?>
 
 <div class="top">
-    <h4>Informations détaillées | <?= $lieu; ?></h4>
+    <h4>Informations sur la boisson | <?= $lieu; ?></h4>
 </div>
 
 <div class="info">

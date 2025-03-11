@@ -14,7 +14,7 @@ $point; // Récupérer la valeur de la colonne point
 ?>
 
 <div class="top">
-    <h4>Informations détaillées | <?= $lieu; ?></h4>
+    <h4>Informations sur la commande | <?= $lieu; ?></h4>
 </div>
 
 <div class="info">
@@ -308,6 +308,64 @@ $point; // Récupérer la valeur de la colonne point
         <?php if ($point == null) { ?>
         <div class="btn-div">
             <a href="../control/delCmde.php?idC=<?= $id; ?>" onclick="return confirmLink()" class="red">Supprimer la commande</a>
+        </div>
+        <?php } ?>
+    </div>
+
+    <div class="info-left">
+        <div class="left-mdf">
+            <h5>Détails :</h5>
+        </div>
+        
+        <?php
+            $conS = "cmdSt = $id AND serviceSt = $service";
+            $donS = recupDon('stock', $conS);
+
+            foreach ($donS as $sto) {
+        ?>
+        <div class="info-cmd">
+            <div>
+                <span>Boisson</span>
+                <p>
+                    <?php
+                        $idB = $sto['BoissonSt'];
+                        $conB = "idB = $idB AND serviceB = $service";
+                        $donB = recupDon('boisson', $conB);
+                        foreach ($donB as $bs) {
+                            echo $bs['designB'];
+                        }
+                    ?>
+                </p>
+            </div>
+            <div class="red">
+                <span>Prix du casier/carton</span>
+                <p>
+                    <?php
+                        $prix = $sto['prixcSt'];
+                        $prixc = number_format($prix, 0, ' ', ' ') . ' FCFA';
+                        echo $prixc;
+                    ?>
+                </p>
+            </div>
+            <div>
+                <span>Quantité</span>
+                <p>
+                    <?php
+                        $qte = $sto['nbrecarsSt'];
+                        echo $qte;
+                    ?>
+                </p>
+            </div>
+            <div class="red">
+                <span>Montant</span>
+                <p>
+                    <?php
+                        $mttB = $prix * $qte;
+                        $mttBt = number_format($mttB, 0, ' ', ' ') . ' FCFA';
+                        echo $mttBt;
+                    ?>
+                </p>
+            </div>
         </div>
         <?php } ?>
     </div>

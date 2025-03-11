@@ -4,6 +4,9 @@ include 'dbConf.php';
 include 'mttConv.php';
 include 'stkFunc.php';
 include 'prodFunc.php';
+include 'recupAll.php';
+include 'mdfStk.php';
+include 'addBenef.php';
 
 if (isset($_POST['mtt']) && ($_POST['mtr'])) {
 

@@ -2,7 +2,7 @@
 
 require_once "design.php";
 
-$titre = "Informations détaillées";
+$titre = "Informations l'inventaire";
 $page = "../public/php/infoVent.php";
 
 monModel($titre, $page);

@@ -14,7 +14,7 @@ $point; // Récupérer la valeur de la colonne point
 ?>
 
 <div class="top">
-    <h4>Informations détaillées | <?= $lieu; ?></h4>
+    <h4>Informations l'inventaire | <?= $lieu; ?></h4>
 </div>
 
 <div class="info">
@@ -312,6 +312,49 @@ $point; // Récupérer la valeur de la colonne point
         <?php if ($point == null) { ?>
         <div class="btn-div">
             <a href="#" onclick="return confirmLink()" class="red">Supprimer l'inventaire</a>
+        </div>
+        <?php } ?>
+    </div>
+
+    <div class="info-left">
+        <div class="left-mdf">
+            <h5>Détails :</h5>
+        </div>
+
+        <?php
+            $conP = "ventPr = $id AND servicePr = $service";
+            $donP = recupDon('produit', $conP);
+
+            foreach ($donP as $pr) {
+        ?>
+        <div class="info-cmd">
+            <div>
+                <span>Boisson</span>
+                <p>
+                    <?php
+                        $idB = $pr['boissonPr'];
+                        $conB = "idB = $idB AND serviceB = $service";
+                        $donB = recupDon('boisson', $conB);
+                        foreach ($donB as $bs) {
+                            echo $bs['designB'];
+                        }
+                    ?>
+                </p>
+            </div>
+            <div>
+                <span>Quantité (Nombre de bouteilles)</span>
+                <p><?= $pr['qtePr']; ?></p>
+            </div>
+            <div class="red">
+                <span>Montant</span>
+                <p>
+                    <?php
+                        $mttB = $pr['mttPr'];
+                        $mttBt = number_format($mttB, 0, ' ', ' ') . ' FCFA';
+                        echo $mttBt;
+                    ?>
+                </p>
+            </div>
         </div>
         <?php } ?>
     </div>

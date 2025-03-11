@@ -15,7 +15,7 @@ $cont; // Type de contenant
 ?>
 
 <div class="top">
-    <h4>Informations détaillées | <?= $lieu; ?></h4>
+    <h4>Informations sur le stock | <?= $lieu; ?></h4>
 </div>
 
 <div class="content">
@@ -105,11 +105,7 @@ $cont; // Type de contenant
                     <td>
                         <?php
                             $nbrecars = $stk['nbrecarsSt'];
-                            if ($nbrecars !== null) {
-                                echo $nbrecars;
-                            } else {
-                                echo 0;
-                            }
+                            echo $nbrecars;
                         ?>
                     </td>
                     
@@ -117,16 +113,25 @@ $cont; // Type de contenant
                     <td>
                         <?php
                             $nbrebtle = $stk['nbrebtleSt'];
-                            if ($nbrebtle !== null) {
-                                echo $nbrebtle;
-                            } else {
-                                echo 0;
-                            }
+                            echo $nbrebtle;
                         ?>
                     </td>
                     
                     <!-- Quantité (Nombre de Bouteilles) -->
-                    <td><?= $stk['qteSt']; ?></td>
+                    <td style="position: relative;">
+                        <?php
+                            echo $stk['qteSt'];
+
+                            // Affichage du bouton Supprimer pour les stock initiaux
+                            if ($stk['cmdSt'] == null) {
+                                ?>
+                                    <div class="supp">
+                                        <a href="../control/delInit.php?idSt=<?=$stk['idSt'];?>&idB=<?=$idB;?>&qte=<?= $stk['qteSt']; ?>" title="Supprimer" onclick="return confirmLink()">X</a>
+                                    </div>
+                                <?php
+                            }
+                        ?>
+                    </td>
                 </tr>
                 <?php } ?>
             </tbody>
@@ -206,3 +211,4 @@ $cont; // Type de contenant
 
 <script src="../public/js/calculStock.js"></script>
 <script src="../public/js/calculProd.js"></script>
+<script src="../public/js/conf.js"></script>

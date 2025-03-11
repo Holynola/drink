@@ -14,7 +14,7 @@ $point; // Récupérer la valeur de la colonne point
 ?>
 
 <div class="top">
-    <h4>Informations détaillées | <?= $lieu; ?></h4>
+    <h4>Informations sur la dépense | <?= $lieu; ?></h4>
 </div>
 
 <div class="info">

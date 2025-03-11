@@ -12,16 +12,18 @@ if (isset($_POST['getName']) && ($_POST['qte']) && ($_POST['prixa'])) {
     $serviceSt = $_SESSION['service'];
     $BoissonSt = $_POST['getName'];
     $qteSt = $_POST['qte'];
+    $venduSt = 0;
     $savebySt = $_SESSION['idUser'];
     $datesaveSt = date('Y-m-d H:i:s');
 
-    $sql = "INSERT INTO stock (serviceSt, BoissonSt, qteSt, cmdSt, nbrebtleSt, nbrecarsSt, prixcSt, prixaSt, savebySt, datesaveSt) VALUES (:serviceSt, :BoissonSt, :qteSt, NULL, NULL, NULL, NULL, :prixaSt, :savebySt, :datesaveSt)";
+    $sql = "INSERT INTO stock (serviceSt, BoissonSt, qteSt, venduSt, cmdSt, nbrebtleSt, nbrecarsSt, prixcSt, prixaSt, savebySt, datesaveSt) VALUES (:serviceSt, :BoissonSt, :qteSt, :venduSt, NULL, NULL, NULL, NULL, :prixaSt, :savebySt, :datesaveSt)";
 
     $stmt = $bdd->prepare($sql);
 
     $stmt->bindParam(':serviceSt', $serviceSt);
     $stmt->bindParam(':BoissonSt', $BoissonSt);
     $stmt->bindParam(':qteSt', $qteSt);
+    $stmt->bindParam(':venduSt', $venduSt);
     $stmt->bindParam(':prixaSt', $prixaSt);
     $stmt->bindParam(':savebySt', $savebySt);
     $stmt->bindParam(':datesaveSt', $datesaveSt);

@@ -4,6 +4,7 @@
     width: 1000px;
     margin: 0 auto;
     display: flex;
+    flex-wrap: wrap;
 }
 
 .info-left,
@@ -78,6 +79,46 @@
     text-align: right;
 }
 
+.info-cmd {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.info-cmd div {
+    width: calc(100% / 2);
+    padding: 10px 5px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.info-cmd div p {
+    margin: 0;
+}
+
+.info-cmd span, .info-cmd p {
+    vertical-align: middle;
+}
+
+@media (max-width: 630px) {
+    .info-cmd {
+        flex-wrap: wrap;
+    }
+
+    .info-cmd div {
+        width: 50%;
+    }
+}
+
+@media (max-width: 400px) {
+    .info-cmd div {
+        width: 100%;
+    }
+}
+
 .info-right {
     display: flex;
     flex-direction: column;
@@ -150,7 +191,7 @@ form input {
     color: var(--orange);
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
     .info {
         width: 100%;
     }

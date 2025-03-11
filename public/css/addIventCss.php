@@ -50,6 +50,28 @@ td input::-webkit-inner-spin-button {
     margin: 0;
 }
 
+.supp {
+    position: absolute;
+    right: 5px;
+    top: 30%;
+}
+
+.supp a {
+    text-decoration: none;
+    background-color: var(--rouge);
+    color: var(--blanc);
+    font-weight: bold;
+    padding: 5px 8px;
+    border-radius: 100%;
+    font-size: 16px;
+    transition: 0.3s ease-out;
+}
+
+.supp a:hover,
+.supp a:focus {
+    background-color: var(--noir);
+}
+
 @media (max-width: 925px) {
     .vent {
         width: 100%;

@@ -57,7 +57,8 @@ include '../control/recupStk.php';
                             s.BoissonSt,
                             b.designB,
                             b.contenantB,
-                            SUM(s.qteSt) AS total_qteSt
+                            SUM(s.qteSt) AS total_qteSt,
+                            SUM(s.venduSt) AS total_venduSt
                         FROM 
                             stock s
                         LEFT JOIN 
@@ -100,19 +101,16 @@ include '../control/recupStk.php';
                 <!-- Sortie du stock -->
                 <div>
                     <?php
-                        $vendu; // Quantité vendue
-                        $idB = $stk['BoissonSt'];
-                        $conP = "SELECT boissonPr, SUM(qtePr) AS total_qteVendu FROM produit WHERE boissonPr = $idB AND servicePr = $service";
-                        $donP = recupStock($conP);
-
-                        foreach ($donP as $pr) {
-                            $vendu = $pr['total_qteVendu'];
+                        $vendu = $stk['total_venduSt'];
                             
+                        if ($vendu) {
                             if ($vendu > 1) {
                                 echo $vendu . ' ' . $ctn . 's';
                             } else {
                                 echo $vendu . ' ' . $ctn;
                             }
+                        } else {
+                            echo '0 ' . $ctn;
                         }
                     ?>
                 </div>
@@ -164,8 +162,7 @@ include '../control/recupStk.php';
         Sortie du stock :
         <b class="red">
             <?php
-                $conPr = "servicePr = $service";
-                $sortie = sumDon('produit', 'qtePr', $conPr);
+                $sortie = sumDon('stock', 'venduSt', $conSt);
                 
                 if ($sortie) {
                     echo $sortie . ' boissons';

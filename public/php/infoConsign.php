@@ -14,7 +14,7 @@ $statut; // Statut de la boisson
 ?>
 
 <div class="top">
-    <h4>Informations détaillées | <?= $lieu; ?></h4>
+    <h4>Informations sur la consignation | <?= $lieu; ?></h4>
 </div>
 
 <div class="info">
