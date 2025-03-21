@@ -42,6 +42,12 @@ for ($i = 0; $i < $ligneCount; $i++) {
         // Enregistrer le produit
         addProduit($servicePr, $vent, $boissonPr, $qtePr, $mttPr);
 
+        // Calcul du montant de vente par bouteille
+        $prixv = $mttPr / $qtePr;
+
+        // Arrondir à la valeur multiple de 5 la plus proche
+        $prixvFr = round($prixv / 5) * 5;
+
         $conSt = "boissonSt = $boissonPr";
         $donSt = recupDon('stock', $conSt);
 
@@ -57,7 +63,9 @@ for ($i = 0; $i < $ligneCount; $i++) {
 
                     // Modifier la quantité vendue dans la table Stock
                     if ($nvVendu > 0) {
-                        updateStk($stock, $nvVendu);
+
+                        // Montant de vente
+                        $mtt = $nvVendu * $prixvFr;
 
                         // Calcul du montant d'achat
                         if ($stk['prixaSt'] == null) {
@@ -71,7 +79,7 @@ for ($i = 0; $i < $ligneCount; $i++) {
                             $mta = $nvVendu * $prixaFr;
 
                             // Enregistrement du bénéfice
-                            addBenefice($servicePr, $vent, $boissonPr, $nvVendu, $mttPr, $mta);
+                            addBenefice($servicePr, $vent, $boissonPr, $nvVendu, $mtt, $mta);
 
                         } else {
                             $prixa = $stk['prixaSt'];
@@ -80,7 +88,7 @@ for ($i = 0; $i < $ligneCount; $i++) {
                             $mta = $nvVendu * $prixa;
 
                             // Enregistrement du bénéfice
-                            addBenefice($servicePr, $vent, $boissonPr, $nvVendu, $mttPr, $mta);
+                            addBenefice($servicePr, $vent, $boissonPr, $nvVendu, $mtt, $mta);
                         }
                     }
 
@@ -93,7 +101,9 @@ for ($i = 0; $i < $ligneCount; $i++) {
 
                     // Modifier la quantité vendue dans la table Stock
                     if ($nvVendu > 0) {
-                        updateStk($stock, $nvVendu);
+
+                        // Montant de vente
+                        $mtt = $nvVendu * $prixvFr;
 
                         // Calcul du montant d'achat
                         if ($stk['prixaSt'] == null) {
@@ -107,7 +117,7 @@ for ($i = 0; $i < $ligneCount; $i++) {
                             $mta = $nvVendu * $prixaFr;
 
                             // Enregistrement du bénéfice
-                            addBenefice($servicePr, $vent, $boissonPr, $nvVendu, $mttPr, $mta);
+                            addBenefice($servicePr, $vent, $boissonPr, $nvVendu, $mtt, $mta);
 
                         } else {
                             $prixa = $stk['prixaSt'];
@@ -116,7 +126,7 @@ for ($i = 0; $i < $ligneCount; $i++) {
                             $mta = $nvVendu * $prixa;
 
                             // Enregistrement du bénéfice
-                            addBenefice($servicePr, $vent, $boissonPr, $nvVendu, $mttPr, $mta);
+                            addBenefice($servicePr, $vent, $boissonPr, $nvVendu, $mtt, $mta);
                         }
                     }
 

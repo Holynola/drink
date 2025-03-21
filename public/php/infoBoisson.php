@@ -23,7 +23,7 @@ include '../public/css/infoCss.php';
         foreach ($donB as $bs) {
     ?>
     <div class="info-left">
-        <img src="../src/boisson/<?= $bs['imageB']; ?>" alt="<?= $bs['imageB']; ?>">
+        <img src="/boisson/<?= $bs['imageB']; ?>" alt="<?= $bs['imageB']; ?>">
     </div>
 
     <div class="info-right">

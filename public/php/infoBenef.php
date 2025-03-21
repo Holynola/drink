@@ -1,6 +1,7 @@
 <?php
 
 include '../control/infoSess.php';
+include '../control/recupStk.php';
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -43,8 +44,19 @@ include '../public/css/addIventCss.php';
             </thead>
             <tbody>
                 <?php
-                    $conB = "ventBf = $id AND serviceBf = $service";
-                    $donB = recupDon('benefice', $conB);
+                    $conB = "SELECT
+                                serviceBf,
+                                boissonBf,
+                                SUM(qteBf) AS total_qte,
+                                SUM(mtvBf) AS total_mtv, 
+                                SUM(mtaBf) AS total_mta 
+                            FROM
+                                benefice
+                            WHERE
+                                ventBf = $id AND serviceBf = $service
+                            GROUP BY
+                                boissonBf, serviceBf";
+                    $donB = recupStock($conB);
 
                     foreach ($donB as $bnf) {
                 ?>
@@ -62,12 +74,12 @@ include '../public/css/addIventCss.php';
                     </td>
                     
                     <!-- Quantité -->
-                    <td><?= $bnf['qteBf']; ?></td>
+                    <td><?= $bnf['total_qte']; ?></td>
                     
                     <!-- Montant de vente -->
                     <td>
                         <?php
-                            $mont = $bnf['mtvBf'];
+                            $mont = $bnf['total_mtv'];
                             $mtv = number_format($mont, 0, ' ', ' ') . ' FCFA';
                             echo $mtv;
                         ?>
@@ -76,7 +88,7 @@ include '../public/css/addIventCss.php';
                     <!-- Montant d'achat -->
                     <td>
                         <?php
-                            $monta = $bnf['mtaBf'];
+                            $monta = $bnf['total_mta'];
                             $mta = number_format($monta, 0, ' ', ' ') . ' FCFA';
                             echo $mta;
                         ?>

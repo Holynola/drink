@@ -17,6 +17,7 @@
     --blanc: #ffffff;
     --rouge: #c1121f;
     --bleu: #1982c4;
+    --gris: #8d99ae;
 }
 
 /* Content */

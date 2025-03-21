@@ -124,11 +124,13 @@ $cont; // Type de contenant
 
                             // Affichage du bouton Supprimer pour les stock initiaux
                             if ($stk['cmdSt'] == null) {
+                                if ($stk['venduSt'] == 0) {
                                 ?>
                                     <div class="supp">
                                         <a href="../control/delInit.php?idSt=<?=$stk['idSt'];?>&idB=<?=$idB;?>&qte=<?= $stk['qteSt']; ?>" title="Supprimer" onclick="return confirmLink()">X</a>
                                     </div>
                                 <?php
+                                }
                             }
                         ?>
                     </td>

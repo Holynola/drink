@@ -311,7 +311,7 @@ $point; // Récupérer la valeur de la colonne point
 
         <?php if ($point == null) { ?>
         <div class="btn-div">
-            <a href="#" onclick="return confirmLink()" class="red">Supprimer l'inventaire</a>
+            <a href="../control/delVent.php?idV=<?=$id;?>" onclick="return confirmLink()" class="red">Supprimer l'inventaire</a>
         </div>
         <?php } ?>
     </div>

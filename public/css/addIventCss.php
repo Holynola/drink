@@ -52,8 +52,13 @@ td input::-webkit-inner-spin-button {
 
 .supp {
     position: absolute;
-    right: 5px;
-    top: 30%;
+    right: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 100%;
 }
 
 .supp a {
@@ -61,7 +66,7 @@ td input::-webkit-inner-spin-button {
     background-color: var(--rouge);
     color: var(--blanc);
     font-weight: bold;
-    padding: 5px 8px;
+    padding: 2px 5px;
     border-radius: 100%;
     font-size: 16px;
     transition: 0.3s ease-out;

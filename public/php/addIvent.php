@@ -49,28 +49,20 @@ include '../public/css/addIventCss.php';
                     $donS = recupStock($conS);
 
                     foreach ($donS as $stk) {
+                        $boissonId = $stk['BoissonSt'];
+                        $conP = "servicePr = $service AND boissonPr = $boissonId";
+                        $vendu = sumDon('produit', 'qtePr', $conP);
+
+                        $initial = $stk['total_qteSt'] - $vendu;
+
+                        if ($initial > 0) {
                 ?>
                 <tr>
                     <!-- Boisson -->
                     <td class="<?= $stk['idB']; ?>"><?= $stk['designB']; ?></td>
                     
                     <!-- Stock initial -->
-                    <td>
-                        <?php
-                            $vendu; // Quantité vendue
-                            $idB = $stk['BoissonSt'];
-                            $conP = "SELECT boissonPr, SUM(qtePr) AS total_qteVendu FROM produit WHERE boissonPr = $idB AND servicePr = $service";
-                            $donP = recupStock($conP);
-
-                            foreach ($donP as $pr) {
-                                $vendu = $pr['total_qteVendu'];
-                            }
-
-                            $stock = $stk['total_qteSt'];
-                            $initial = $stock - $vendu;
-                            echo $initial;
-                        ?>
-                    </td>
+                    <td><?= $initial; ?></td>
                     
                     <!-- Stock après vente -->
                     <td>
@@ -101,7 +93,10 @@ include '../public/css/addIventCss.php';
                         style="display: none;">
                     </td>
                 </tr>
-                <?php } ?>
+                <?php   
+                        }
+                    } 
+                ?>
                 <tr>
                     <td style="background-color: var(--rouge);color: var(--blanc);">Totaux</td>
                     

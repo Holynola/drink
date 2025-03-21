@@ -24,6 +24,7 @@ if (isset($_GET['idDp'])) {
     } catch (PDOException $e) {
         $mess = "Erreur ! Veuillez réessayer plus tard";
         $urls = '../pages/dpnses.php?msg=' . urldecode($mess);
+        header("Location: " . $urls);
         die("Error executing SQL query: " . $e->getMessage());
     }
 

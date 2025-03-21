@@ -18,7 +18,7 @@ $(document).ready(function() {
     $('#stock tfoot tr').html(`
         <td style="background-color:var(--rouge);color:var(--blanc);" colspan="2"><strong>Total</strong></td>
         <td style="color:var(--rouge);"><strong>${totalCol3}</strong></td>
-        <td style="background-color:var(--noir);"></td>
+        <td style="background-color:var(--gris);"></td>
         <td style="color:var(--bleu);"><strong>${totalCol5}</strong></td>
     `);
 });
