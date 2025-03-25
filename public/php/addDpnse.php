@@ -5,7 +5,6 @@ include '../public/css/addUserCss.php';
 ?>
 
 <div class="top">
-    <i class="fa-solid fa-coins"></i>
     <h4>Ajouter une dépense | <?= $lieu; ?></h4>
 </div>
 

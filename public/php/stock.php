@@ -6,18 +6,19 @@ include '../control/recupStk.php';
 ?>
 <style>
 
-.all-div div:nth-child(4) {
+tr th:nth-child(3),
+tr td:nth-child(3) {
     color: var(--rouge);
 }
 
-.all-div div:nth-child(3) {
+tr th:nth-child(4),
+tr td:nth-child(4) {
     color: var(--bleu);
 }
 
 </style>
 
 <div class="top">
-    <i class="fa-solid fa-house-user"></i>
     <h4>Stock | <?= $lieu; ?></h4>
 </div>
 
@@ -41,16 +42,18 @@ include '../control/recupStk.php';
     </div>
 </div>
 
-<div class="all">
-    <div class="content">
-        <div class="all-content">
-            <div class="all-div ett">
-                <div>Boisson</div>
-                <div>Entrée en stock</div>
-                <div>Sortie du stock</div>
-                <div>Etat du stock</div>
-                <div></div>
-            </div>
+<div class="content">
+    <table>
+        <thead>
+            <tr>
+                <th>Boisson</th>
+                <th>Entrée en stock</th>
+                <th>Sortie du stock</th>
+                <th>Etat du stock</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
             <?php
                 $conS = "SELECT 
                             s.serviceSt,
@@ -80,12 +83,12 @@ include '../control/recupStk.php';
                         $ctn = $ct['libelleCt'];
                     }
             ?>
-            <div class="all-div atr">
+            <tr>
                 <!-- Boisson -->
-                <div><?= $stk['designB']; ?></div>
+                <td><?= $stk['designB']; ?></td>
                 
                 <!-- Entrée en stock -->
-                <div>
+                <td>
                     <?php
                         $stock = $stk['total_qteSt'];
 
@@ -95,10 +98,10 @@ include '../control/recupStk.php';
                             echo $stock . ' ' . $ctn;
                         }
                     ?>
-                </div>
+                </td>
                 
                 <!-- Sortie du stock -->
-                <div>
+                <td>
                     <?php
                         $boissonId = $stk['BoissonSt'];
                         $conP = "boissonPr = $boissonId AND servicePr = $service";
@@ -110,10 +113,10 @@ include '../control/recupStk.php';
                             echo $vendu . ' ' . $ctn;
                         }
                     ?>
-                </div>
+                </td>
                 
                 <!-- Etat du stock -->
-                <div>
+                <td>
                     <?php
                         $etat = $stock - $vendu;
 
@@ -123,15 +126,15 @@ include '../control/recupStk.php';
                             echo $etat . ' ' . $ctn;
                         }
                     ?>
-                </div>
+                </td>
                 
-                <div>
+                <td>
                     <a href="infosStock.php?idB=<?= $stk['BoissonSt']; ?>&design=<?= $stk['designB']; ?>">Plus de détails</a>
-                </div>
-            </div>
-            <?php } ?>
-        </div>
-    </div>
+                </td>
+            </tr>
+        <?php } ?>
+        </tbody>
+    </table>
 </div>
 
 <!-- Recap -->

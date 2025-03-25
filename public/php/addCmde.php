@@ -7,7 +7,6 @@ include '../public/css/addCmdeCss.php';
 ?>
 
 <div class="top">
-    <i class="fa-solid fa-handshake-simple"></i>
     <h4>Ajouter une commande | <?= $lieu; ?></h4>
 </div>
 

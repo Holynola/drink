@@ -166,7 +166,27 @@ h3.title {
     align-items: center;
 }
 
-.all-div a {
+table {
+    width: 1000px;
+    font-size: 16px;
+    text-align: center;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+thead tr {
+    border-bottom: 2px solid rgba(0,0,0,0.6);
+}
+
+tbody tr {
+    border-bottom: 2px solid rgba(0,0,0,0.1);
+}
+
+th, td {
+    padding: 10px 0;
+}
+
+td a {
     color: var(--noir);
     font-weight: 600;
 }
@@ -176,7 +196,7 @@ h3.title {
         font-size: 25px;
     }
 
-    .all-content {
+    table {
         width: 100%;
     }
 }
@@ -186,15 +206,14 @@ h3.title {
         font-size: 20px;
     }
     
-    .all-div div {
+    table {
         font-size: 14px;
+        min-width: 400px;
     }
-}
 
-@media (max-width: 800px) {
-   .all {
-    width: 800px;
-   }
+    tr, td {
+        padding: 10px 10px;
+    }
 }
 
 /* Tri */

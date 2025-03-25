@@ -4,18 +4,20 @@
 
 .sidebar {
     min-height: 100vh;
-    width: 78px;
-    padding: 6px 14px;
+    width: 0;
+    padding: 6px 0;
     z-index: 99;
     background-color: var(--noir);
     transition: all 0.5s ease;
     position: absolute;
     top: 0;
     left: 0;
+    overflow: hidden;
 }
 
 .sidebar.open {
     width: 250px;
+    padding: 6px 14px;
 }
 
 .sidebar .logo_details {
@@ -23,6 +25,7 @@
     display: flex;
     align-items: center;
     position: relative;
+    padding: 0 14px;
 }
 
 .sidebar .logo_details .fa-audible {
@@ -36,6 +39,7 @@
     opacity: 0;
     transition: all 0.5s ease;
     color: var(--blanc);
+    margin-left: 10px;
 }
 
 .sidebar.open .logo_details .fa-audible,
@@ -52,6 +56,7 @@
     text-align: center;
     cursor: pointer;
     transition: all 0.5s ease;
+    color: var(--blanc);
 }
 
 .sidebar.open .logo_details #btn {
@@ -79,58 +84,7 @@
 }
 
 .sidebar li .tooltip {
-    position: absolute;
-    top: -20px;
-    left: calc(100% + 15px);
-    z-index: 3;
-    background-color: var(--blanc);
-    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
-    padding: 6px 14px;
-    font-size: 15px;
-    font-weight: 400;
-    border-radius: 5px;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-}
-
-.sidebar li:hover .tooltip {
-    opacity: 1;
-    pointer-events: auto;
-    transition: all 0.4s ease;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.sidebar.open li .tooltip {
-    display: none;
-}
-
-.sidebar input {
-    font-size: 15px;
-    color: var(--blanc);
-    font-weight: 400;
-    outline: none;
-    height: 35px;
-    width: 35px;
-    border: none;
-    border-radius: 5px;
-    background-color: var(--blanc);
-    transition: all 0.5s ease;
-}
-
-.sidebar.open input {
-    width: 100%;
-    padding: 0 20px 0 60px;
-}
-
-.sidebar .fa-magnifying-glass {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    background-color: var(--blanc);
-    color: var(--noir);
+    display: none; /* Désactive les tooltips en version mobile */
 }
 
 .sidebar li a {
@@ -174,12 +128,6 @@
     opacity: 0;
 }
 
-.sidebar li a:hover .link_name,
-.sidebar li a:hover i {
-    transition: all 0.5s ease;
-    color: var(--blanc);
-}
-
 .sidebar.open li a .link_name {
     opacity: 1;
     pointer-events: auto;
@@ -195,16 +143,17 @@
 .sidebar li.profile {
     position: absolute;
     height: 60px;
-    width: 78px;
+    width: 0;
     left: 0;
     bottom: 0;
-    padding: 10px 14px;
+    padding: 10px 0;
     overflow: hidden;
     transition: all 0.5s ease;
 }
 
 .sidebar.open li.profile {
     width: 250px;
+    padding: 10px 14px;
 }
 
 .sidebar .profile .profile_details {
@@ -248,9 +197,9 @@
     position: relative;
     min-height: 100vh;
     top: 0;
-    left: 60px;
-    width: calc(100% - 78px);
-    padding: 10px 10px 10px 25px;
+    left: 0;
+    width: 100%;
+    padding: 10px;
     transition: all 0.5s ease;
     z-index: 2;
 }
@@ -260,21 +209,74 @@
     width: calc(100% - 250px);
 }
 
+/* Mobile menu button (always visible) */
+.mobile-menu-btn {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 100;
+    font-size: 25px;
+    color: var(--blanc);
+    background-color: var(--noir);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+    .sidebar {
+        width: 78px;
+        padding: 6px 14px;
+    }
+    
+    .sidebar li.profile {
+        width: 78px;
+    }
+    
+    .home-section {
+        left: 78px;
+        width: calc(100% - 78px);
+    }
+    
+    .mobile-menu-btn {
+        display: none;
+    }
+    
+    .sidebar li .tooltip {
+        display: block;
+        position: absolute;
+        top: -20px;
+        left: calc(100% + 15px);
+        z-index: 3;
+        background-color: var(--blanc);
+        box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+        padding: 6px 14px;
+        font-size: 15px;
+        font-weight: 400;
+        border-radius: 5px;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+    }
+    
+    .sidebar li:hover .tooltip {
+        opacity: 1;
+        pointer-events: auto;
+        transition: all 0.4s ease;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
 /* Top */
 
 .top {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    align-items: center;
     text-align: center;
     width: 100%;
     margin: 20px 0 40px;
-}
-
-.top i {
-    font-size: 50px;
-    margin-right: 20px;
 }
 
 .top h4 {
@@ -283,13 +285,15 @@
 
 /* Responsive */
 
-@media (max-width: 500px) {
-    .top i {
-        font-size: 30px;
+@media (max-width: 600px) {    
+    .top {
+        padding-top: 50px;
     }
-    
+}
+
+@media (max-width: 450px) {
     .top h4 {
-        font-size: 24px;
+        font-size: 20px;
     }
 }
 

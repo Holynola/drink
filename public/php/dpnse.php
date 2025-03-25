@@ -5,18 +5,19 @@ include '../control/infoSess.php';
 ?>
 <style>
 
-.all-div div:nth-child(2) {
+tr th:nth-child(2),
+tr td:nth-child(2) {
     color: var(--rouge);
 }
 
-.all-div div:nth-child(4) {
+tr th:nth-child(4),
+tr td:nth-child(4) {
     color: var(--bleu);
 }
 
 </style>
 
 <div class="top">
-    <i class="fa-solid fa-coins"></i>
     <h4>Dépenses | <?= $lieu; ?></h4>
 </div>
 
@@ -28,44 +29,46 @@ include '../control/infoSess.php';
     </div>
 </div>
 
-<div class="all">
-    <div class="content">
-        <div class="all-content">
-            <div class="all-div ett">
-                <div>Date de dépense</div>
-                <div>Montant</div>
-                <div>Montant reglé</div>
-                <div>Restant à régler</div>
-                <div>Détails</div>
-                <div></div>
-            </div>
+<div class="content">
+    <table>
+        <thead>
+            <tr>
+                <th>Date de dépense</th>
+                <th>Montant</th>
+                <th>Montant reglé</th>
+                <th>Restant à régler</th>
+                <th>Détails</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
             <?php
                 $con = "serviceDp = $service";
                 $donD = recupDon('depense', $con);
 
                 foreach ($donD as $dp) {
             ?>
-            <div class="all-div atr">
+            <tr>
                 <!-- Date de dépense -->
-                <div>
+                <td>
                     <?php
                         $datemade = $dp['datemadeDp'];
                         $dateFR = extraireDateFR($datemade);
                         echo $dateFR;
                     ?>
-                </div>
+                </td>
                 
                 <!-- Montant -->
-                <div>
+                <td>
                     <?php
                         $mont = $dp['mttDp'];
                         $mtt = number_format($mont, 0, ' ', ' ') . ' FCFA';
                         echo $mtt;
                     ?>
-                </div>
+                </td>
                 
                 <!-- Montant réglé -->
-                <div>
+                <td>
                     <?php
                         $reg = $dp['mtrDp']; // Premier montant réglé
                         
@@ -78,27 +81,27 @@ include '../control/infoSess.php';
                         $mtr = number_format($montr, 0, ' ', ' ') . ' FCFA';
                         echo $mtr;
                     ?>
-                </div>
+                </td>
                 
                 <!-- Reste à régler -->
-                <div>
+                <td>
                     <?php
                         $reste = $mont - $montr;
                         $rar = number_format($reste, 0, ' ', ' ') . ' FCFA';
                         echo $rar;
                     ?>
-                </div>
+                </td>
                 
                 <!-- Détails -->
-                <div><?= $dp['detailDp']; ?></div>
+                <td><?= $dp['detailDp']; ?></td>
 
-                <div>
+                <td>
                     <a href="infosDpense.php?idDp=<?= $dp['idDp']; ?>">Plus de détails</a>
-                </div>
-            </div>
-            <?php } ?>
-        </div>
-    </div>
+                </td>
+            </tr>
+        <?php } ?>
+        </tbody>
+    </table>
 </div>
 
 <!-- Recap -->

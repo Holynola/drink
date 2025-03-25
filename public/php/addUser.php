@@ -8,7 +8,6 @@ include '../public/css/addUserCss.php';
 <script src="../public/js/verifpass.js"></script>
 
 <div class="top">
-    <i class="fa-solid fa-user"></i>
     <h4>Ajouter un utilisateur | <?= $lieu; ?></h4>
 </div>
 

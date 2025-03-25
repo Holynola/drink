@@ -6,18 +6,19 @@ include '../control/infoSess.php';
 
 <style>
 
-.all-div div:nth-child(3) {
+tr th:nth-child(3),
+tr td:nth-child(3) {
     color: var(--rouge);
 }
 
-.all-div div:nth-child(4) {
+tr th:nth-child(4),
+tr td:nth-child(4) {
     color: var(--bleu);
 }
 
 </style>
 
 <div class="top">
-    <i class="fa-solid fa-sack-dollar"></i>
     <h4>Inventaires | <?= $lieu; ?></h4>
 </div>
 
@@ -29,44 +30,46 @@ include '../control/infoSess.php';
     </div>
 </div>
 
-<div class="all">
-    <div class="content">
-        <div class="all-content">
-            <div class="all-div ett">
-                <div>Date d'inventaire</div>
-                <div>Montant recette</div>
-                <div>Montant reçu</div>
-                <div>Différence</div>
-                <div>Effectué par</div>
-                <div></div>
-            </div>
+<div class="content">
+    <table>
+        <thead>
+            <tr>
+                <th>Date d'inventaire</th>
+                <th>Montant recette</th>
+                <th>Montant reçu</th>
+                <th>Différence</th>
+                <th>Effectué par</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
             <?php
                 $conI = "serviceV = $service";
                 $donI = recupDon('inventory', $conI);
 
                 foreach ($donI as $iv) {
             ?>
-            <div class="all-div atr">
+            <tr>
                 <!-- Date d'inventaire -->
-                <div>
+                <td>
                     <?php
                         $datemade = $iv['datemadeV'];
                         $dateFR = extraireDateFR($datemade);
                         echo $dateFR;
                     ?>
-                </div>
+                </td>
                 
                 <!-- Montant recette -->
-                <div>
+                <td>
                     <?php
                         $mont = $iv['mttV'];
                         $mtt = number_format($mont, 0, ' ', ' ') . ' FCFA';
                         echo $mtt;
                     ?>
-                </div>
+                </td>
                 
                 <!-- Montant reçu -->
-                <div>
+                <td>
                     <?php
                         $reg = $iv['mtrV']; // Montant reçu
 
@@ -79,19 +82,19 @@ include '../control/infoSess.php';
                         $mtr = number_format($montr, 0, ' ', ' ') . ' FCFA';
                         echo $mtr;
                     ?>
-                </div>
+                </td>
                 
                 <!-- Différence -->
-                <div>
+                <td>
                     <?php
                         $reste = $mont - $montr;
                         $rar = number_format($reste, 0, ' ', ' ') . ' FCFA';
                         echo $rar;
                     ?>
-                </div>
+                </td>
                 
                 <!-- Effectué par -->
-                <div>
+                <td>
                     <?php
                         $auteurN = $iv['madebyV'];
                         $cond = "idU = $auteurN";
@@ -103,15 +106,15 @@ include '../control/infoSess.php';
                             }
                         }
                     ?>
-                </div>
+                </td>
                 
-                <div>
+                <td>
                     <a href="infosVent.php?id=<?= $iv['idV']; ?>">Plus de détails</a>
-                </div>
-            </div>
-            <?php } ?>
-        </div>
-    </div>
+                </td>
+            </tr>
+        <?php } ?>
+        </tbody>
+    </table>
 </div>
 
 <!-- Recap -->

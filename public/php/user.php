@@ -6,18 +6,19 @@ include '../control/infoSess.php';
 
 <style>
 
-.all-div div:nth-child(3) {
+tr th:nth-child(3),
+tr td:nth-child(3) {
     color: var(--rouge);
 }
 
-.all-div div:nth-child(4) {
+tr th:nth-child(4),
+tr td:nth-child(4) {
     color: var(--bleu);
 }
 
 </style>
 
 <div class="top">
-    <i class="fa-solid fa-users"></i>
     <h4>Utilisateurs | <?= $lieu; ?></h4>
 </div>
 
@@ -29,56 +30,58 @@ include '../control/infoSess.php';
     </div>
 </div>
 
-<div class="all">
-    <div class="content">
-        <div class="all-content">
-            <div class="all-div ett">
-                <div>Date d'enregistrement</div>
-                <div>Nom et Prénoms</div>
-                <div>Poste</div>
-                <div>Statut du compte</div>
-                <div></div>
-            </div>
+<div class="content">
+    <table>
+        <thead>
+            <tr>
+                <th>Date d'enregistrement</th>
+                <th>Nom et Prénoms</th>
+                <th>Poste</th>
+                <th>Statut du compte</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
             <?php
                 $conU = "posteU != 5 AND (serviceU = $service OR serviceU = 3) AND statutU != 'DEL'";
                 $donU = recupDon('users', $conU);
 
                 foreach ($donU as $user) {
             ?>
-            <div class="all-div atr">
+            <tr>
                 <!-- Date d'enregistrement -->
-                <div>
+                <td>
                     <?php
                         $dateEng = $user['datesaveU'];
                         $dateFR = extraireDateFR($dateEng);
                         echo $dateFR;
                     ?>
-                </div>
+                </td>
                 
                 <!-- Nom et Prénoms -->
-                <div><?= $user['nomU'] . ' ' . $user['prenomsU']; ?></div>
+                <td><?= $user['nomU'] . ' ' . $user['prenomsU']; ?></td>
                 
                 <!-- Poste -->
-                <div>
+                <td>
                     <?php
                         $poste = $user['posteU'];
                         affPoste($poste);
                     ?>
-                </div>
+                </td>
                 
                 <!-- Statut du compte -->
-                <div>
+                <td>
                     <?php
                         $statut = $user['statutU'];
                         affStatut($statut);
                     ?>
-                </div>
+                </td>
                 
-                <div>
+                <td>
                     <a href="infosUser.php?id=<?= $user['idU']; ?>">Plus de détails</a>
-                </div>
-            </div>
-            <?php } ?>
-        </div>
-    </div>
+                </td>
+            </tr>
+        <?php } ?>
+        </tbody>
+    </table>
 </div>

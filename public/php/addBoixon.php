@@ -17,7 +17,6 @@ include '../public/css/addUserCss.php';
 </script>
 
 <div class="top">
-    <i class="fa-solid fa-wine-glass"></i>
     <h4>Ajouter une boisson | <?= $lieu; ?></h4>
 </div>
 

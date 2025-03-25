@@ -5,18 +5,19 @@ include '../control/infoSess.php';
 
 <style>
 
-.all-div div:nth-child(1) {
+tr th:nth-child(1),
+tr td:nth-child(1) {
     color: var(--rouge);
 }
 
-.all-div div:nth-child(5) {
+tr th:nth-child(5),
+tr td:nth-child(5) {
     color: var(--bleu);
 }
 
 </style>
 
 <div class="top">
-    <i class="fa-solid fa-coins"></i>
     <h4>Historique de connexion | <?= $lieu; ?></h4>
 </div>
 
@@ -24,25 +25,27 @@ include '../control/infoSess.php';
     <?php include 'triDiv.php'; ?>
 </div>
 
-<div class="all">
-    <div class="content">
-        <div class="all-content">
-            <div class="all-div ett">
-                <div>Date de connexion</div>
-                <div>Nom</div>
-                <div>Prénoms</div>
-                <div>Contact</div>
-                <div>Poste</div>
-            </div>
+<div class="content">
+    <table>
+        <thead>
+            <tr>
+                <th>Date de connexion</th>
+                <th>Nom</th>
+                <th>Prénoms</th>
+                <th>Contact</th>
+                <th>Poste</th>
+            </tr>
+        </thead>
+        <tbody>
             <?php
-                $conLg = "posteLg != 5 ORDER BY datesaveLg DESC";
+                $conLg = "serviceLg = $service posteLg != 5 ORDER BY datesaveLg DESC";
                 $donLg = recupDon('logs', $conLg);
 
                 foreach ($donLg as $lg) {
             ?>
-            <div class="all-div atr">
+            <tr>
                 <!-- Date de connexion -->
-                <div>
+                <td>
                     <?php
                         $datesave = $lg['datesaveLg'];
                         $saveDate = extraireDateFR($datesave);
@@ -51,7 +54,7 @@ include '../control/infoSess.php';
     
                         echo $saveDate . ' ' . $saveHour;
                     ?>
-                </div>
+                </td>
                 
                 <?php
                     $id = $lg['userLg'];
@@ -62,27 +65,27 @@ include '../control/infoSess.php';
                     foreach ($donU as $us) {
                 ?>
                 <!-- Nom -->
-                <div><?= $us['nomU']; ?></div>
+                <td><?= $us['nomU']; ?></td>
                 
                 <!-- Prénoms -->
-                <div><?= $us['prenomsU']; ?></div>
+                <td><?= $us['prenomsU']; ?></td>
                 
                 <!-- Contact -->
-                <div><?= $us['contactU']; ?></div>
+                <td><?= $us['contactU']; ?></td>
 
                 <?php } ?>
                 
                 <!-- Poste -->
-                <div>
+                <td>
                     <?php
                         $poste = $lg['posteLg'];
                         affPoste($poste);
 
                         $posteD = $poste;
                     ?>
-                </div>
-            </div>
+                </td>
+            </tr>
             <?php } ?>
-        </div>
-    </div>
+        </tbody>
+    </table>
 </div>

@@ -5,7 +5,6 @@ include '../public/css/addUserCss.php';
 ?>
 
 <div class="top">
-    <i class="fa-solid fa-house-user"></i>
     <h4>Ajouter un stock | <?= $lieu; ?></h4>
 </div>
 

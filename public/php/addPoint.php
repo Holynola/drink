@@ -6,7 +6,6 @@ include '../public/css/addCmdeCss.php';
 ?>
 
 <div class="top">
-    <i class="fa-solid fa-chart-simple"></i>
     <h4>Faire un point | <?= $lieu; ?></h4>
 </div>
 

@@ -4,18 +4,19 @@ include '../control/infoSess.php';
 ?>
 <style>
 
-.all-div div:nth-child(2) {
+tr th:nth-child(2),
+tr td:nth-child(2) {
     color: var(--rouge);
 }
 
-.all-div div:nth-child(3) {
+tr th:nth-child(3),
+tr td:nth-child(3) {
     color: var(--bleu);
 }
 
 </style>
 
 <div class="top">
-    <i class="fa-solid fa-chart-simple"></i>
     <h4>Points | <?= $lieu; ?></h4>
 </div>
 
@@ -27,27 +28,29 @@ include '../control/infoSess.php';
     </div>
 </div>
 
-<div class="all">
-    <div class="content">
-        <div class="all-content">
-            <div class="all-div ett">
-                <div>Date du point</div>
-                <div>Montant total</div>
-                <div>Montant versé</div>
-                <div>Gérant</div>
-                <div>Gestionnaire</div>
-                <div></div>
-            </div>
-            <div class="all-div atr">
-                <div>20 Février 2025</div>
-                <div>200 000 FCFA</div>
-                <div>195 000 FCFA</div>
-                <div>Charles Yao</div>
-                <div>Koné Moussa</div>
-                <div>
+<div class="content">
+    <table>
+        <thead>
+            <tr>
+                <th>Date du point</th>
+                <th>Montant total</th>
+                <th>Montant versé</th>
+                <th>Manquant</th>
+                <th>Gérant</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>20 Février 2025</td>
+                <td>200 000 FCFA</td>
+                <td>195 000 FCFA</td>
+                <td>5 000 FCFA</td>
+                <td>Charles Yao</td>
+                <td>
                     <a href="#">Plus de détails</a>
-                </div>
-            </div>
-        </div>
-    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

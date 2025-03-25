@@ -6,7 +6,6 @@ include '../public/css/bordCss.php';
 ?>
 
 <div class="top">
-    <i class="fa-solid fa-folder"></i>
     <h4>Tableau de bord | <?= $lieu; ?></h4>
 </div>
 

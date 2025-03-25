@@ -6,7 +6,6 @@ include '../public/css/addUserCss.php';
 ?>
 
 <div class="top">
-    <i class="fa-solid fa-cubes"></i>
     <h4>Ajouter un fournisseur | <?= $lieu; ?></h4>
 </div>
 

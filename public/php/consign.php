@@ -6,18 +6,19 @@ include '../control/infoSess.php';
 
 <style>
 
-.all-div div:nth-child(2) {
+tr th:nth-child(2),
+tr td:nth-child(2) {
     color: var(--rouge);
 }
 
-.all-div div:nth-child(4) {
+tr th:nth-child(4),
+tr td:nth-child(4) {
     color: var(--bleu);
 }
 
 </style>
 
 <div class="top">
-    <i class="fa-solid fa-lock"></i>
     <h4>Consignations de boisson | <?= $lieu; ?></h4>
 </div>
 
@@ -29,35 +30,37 @@ include '../control/infoSess.php';
     </div>
 </div>
 
-<div class="all">
-    <div class="content">
-        <div class="all-content">
-            <div class="all-div ett">
-                <div>Date d'enregistrement</div>
-                <div>Boisson</div>
-                <div>Nombre de bouteilles</div>
-                <div>Statut</div>
-                <div>Enregistrée par</div>
-                <div></div>
-            </div>
+<div class="content">
+    <table>
+        <thead>
+            <tr>
+                <th>Date d'enregistrement</th>
+                <th>Boisson</th>
+                <th>Nombre de bouteilles</th>
+                <th>Statut</th>
+                <th>Enregistrée par</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
             <?php
                 $conC = "serviceCs = $service";
                 $donC = recupDon('consign', $conC);
 
                 foreach ($donC as $csn) {
             ?>
-            <div class="all-div atr">
+            <tr>
                 <!-- Date d'enregistrement -->
-                <div>
+                <td>
                     <?php
                         $dateEng = $csn['datesaveCs'];
                         $dateFR = extraireDateFR($dateEng);
                         echo $dateFR;
                     ?>
-                </div>
+                </td>
                 
                 <!-- Boisson -->
-                <div>
+                <td>
                     <?php
                         $idB = $csn['boissonCs'];
                         $conB = "idB = $idB";
@@ -67,13 +70,13 @@ include '../control/infoSess.php';
                             echo $bs['designB'];
                         }
                     ?>
-                </div>
+                </td>
                 
                 <!-- Nombre de bouteilles -->
-                <div><?= $csn['nbrebteCs'] ?></div>
+                <td><?= $csn['nbrebteCs'] ?></td>
                 
                 <!-- Statut -->
-                <div>
+                <td>
                     <?php
                         $statut = $csn['statutCs'];
 
@@ -83,10 +86,10 @@ include '../control/infoSess.php';
                             echo "En stock";
                         }
                     ?>
-                </div>
+                </td>
                 
                 <!-- Enregistrée par -->
-                <div>
+                <td>
                     <?php
                         $saveby = $csn['savebyCs'];
                         $conUs = "idU = $saveby";
@@ -95,13 +98,13 @@ include '../control/infoSess.php';
                             echo $us['nomU'] . ' ' . $us['prenomsU'];
                         }
                     ?>
-                </div>
+                </td>
                 
-                <div>
+                <td>
                     <a href="infosConsign.php?id=<?= $csn['idCs']; ?>">Plus de détails</a>
-                </div>
-            </div>
+                </td>
+            </tr>
             <?php } ?>
-        </div>
-    </div>
+        </tbody>
+    </table>
 </div>

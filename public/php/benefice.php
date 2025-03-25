@@ -7,18 +7,19 @@ include '../control/recupStk.php';
 
 <style>
 
-.all-div div:nth-child(2) {
+tr th:nth-child(2),
+tr td:nth-child(2) {
     color: var(--rouge);
 }
 
-.all-div div:nth-child(4) {
+tr th:nth-child(4),
+tr td:nth-child(4) {
     color: var(--bleu);
 }
 
 </style>
 
 <div class="top">
-    <i class="fa-solid fa-wallet"></i>
     <h4>Bénéfices | <?= $lieu; ?></h4>
 </div>
 
@@ -26,16 +27,18 @@ include '../control/recupStk.php';
     <?php include 'triDiv.php'; ?>
 </div>
 
-<div class="all">
-    <div class="content">
-        <div class="all-content">
-            <div class="all-div ett">
-                <div>Date d'enregistrement</div>
-                <div>Montant de vente</div>
-                <div>Montant d'achat</div>
-                <div>Bénéfices</div>
-                <div></div>
-            </div>
+<div class="content">
+    <table>
+        <thead>
+            <tr>
+                <th>Date d'enregistrement</th>
+                <th>Montant de vente</th>
+                <th>Montant d'achat</th>
+                <th>Bénéfices</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
             <?php
                 $conB = "SELECT 
                             serviceBf, 
@@ -54,50 +57,50 @@ include '../control/recupStk.php';
 
                 foreach ($donB as $benef) {
             ?>
-            <div class="all-div atr">
+            <tr>
                 <!-- Date d'enregistrement -->
-                <div>
+                <td>
                     <?php
                         $dateEng = $benef['datesaveBf'];
                         $dateFR = extraireDateFR($dateEng);
                         echo $dateFR;
                     ?>
-                </div>
+                </td>
                 
                 <!-- Montant de vente -->
-                <div>
+                <td>
                     <?php
                         $mont = $benef['total_mtv'];
                         $mtv = number_format($mont, 0, ' ', ' ') . ' FCFA';
                         echo $mtv;
                     ?>
-                </div>
+                </td>
                 
                 <!-- Montant d'achat -->
-                <div>
+                <td>
                     <?php
                         $monta = $benef['total_mta'];
                         $mta = number_format($monta, 0, ' ', ' ') . ' FCFA';
                         echo $mta;
                     ?>
-                </div>
+                </td>
                 
                 <!-- Bénéfice -->
-                <div>
+                <td>
                     <?php
                         $bnf = $benef['total_benef'];
                         $benefice = number_format($bnf, 0, ' ', ' ') . ' FCFA';
                         echo $benefice;
                     ?>
-                </div>
+                </td>
                 
-                <div>
+                <td>
                     <a href="infosBenef.php?id=<?= $benef['ventBf']; ?>">Plus de détails</a>
-                </div>
-            </div>
-            <?php } ?>
-        </div>
-    </div>
+                </td>
+            </tr>
+        <?php } ?>
+        </tbody>
+    </table>
 </div>
 
 <!-- Recap -->

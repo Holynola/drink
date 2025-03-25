@@ -48,6 +48,9 @@ HTML;
 echo <<<HTML
 </head>
 <body>
+    <button class="mobile-menu-btn" id="mobile-btn">
+        <i class="fa-solid fa-bars"></i>
+    </button>
     <div class="sidebar">
         <div class="logo_details">
             <i class="fa-brands fa-audible"></i>

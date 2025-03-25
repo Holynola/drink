@@ -6,7 +6,6 @@ include '../public/css/boissonCss.php';
 ?>
 
 <div class="top">
-    <i class="fa-solid fa-champagne-glasses"></i>
     <h4>Boissons | <?= $lieu; ?></h4>
 </div>
 

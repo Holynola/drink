@@ -5,18 +5,19 @@ include '../control/infoSess.php';
 ?>
 <style>
 
-.all-div div:nth-child(2) {
+tr th:nth-child(2),
+tr td:nth-child(2) {
     color: var(--rouge);
 }
 
-.all-div div:nth-child(4) {
+tr th:nth-child(4),
+tr td:nth-child(4) {
     color: var(--bleu);
 }
 
 </style>
 
 <div class="top">
-    <i class="fa-solid fa-truck"></i>
     <h4>Fournisseurs | <?= $lieu; ?></h4>
 </div>
 
@@ -28,48 +29,50 @@ include '../control/infoSess.php';
     </div>
 </div>
 
-<div class="all">
-    <div class="content">
-        <div class="all-content">
-            <div class="all-div ett">
-                <div>Date d'enregistrement</div>
-                <div>Nom du fournisseur</div>
-                <div>Localisation</div>
-                <div>Contact</div>
-                <div></div>
-            </div>
+<div class="content">
+    <table>
+        <thead>
+            <tr>
+                <th>Date d'enregistrement</th>
+                <th>Nom du fournisseur</th>
+                <th>Localisation</th>
+                <th>Contact</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
             <?php
                 $conF = "statutF = 'ON' ORDER BY nomF ASC";
                 $donF = recupDon('fournisseur', $conF);
 
                 foreach ($donF as $four) {
             ?>
-            <div class="all-div atr">
+            <tr>
                 <!-- Date d'enregistrement -->
-                <div>
+                <td>
                     <?php
                         $dateEng = $four['datesaveF'];
                         $dateFR = extraireDateFR($dateEng);
                         echo $dateFR;
                     ?>
-                </div>
+                </td>
                 
                 <!-- Nom du fournisseur -->
-                <div><?= $four['nomF']; ?></div>
+                <td><?= $four['nomF']; ?></td>
                 
                 <!-- Localisation -->
-                <div><?= $four['localF']; ?></div>
+                <td><?= $four['localF']; ?></td>
                 
                 <!-- Contact -->
-                <div><?= $four['numF']; ?></div>
+                <td><?= $four['numF']; ?></td>
                 
-                <div>
+                <td>
                     <a href="../control/delFour.php?idt=<?= $four['idF']; ?>" onclick="return confirmLink()">Supprimer</a>
-                </div>
-            </div>
-            <?php } ?>
-        </div>
-    </div>
+                </td>
+            </tr>
+        <?php } ?>
+        </tbody>
+    </table>
 </div>
 
 <script src="../public/js/conf.js"></script>
