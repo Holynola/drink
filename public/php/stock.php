@@ -107,6 +107,10 @@ tr td:nth-child(4) {
                         $conP = "boissonPr = $boissonId AND servicePr = $service";
                         $vendu = sumDon('produit', 'qtePr', $conP);
 
+                        if ($vendu == null) {
+                            $vendu = 0;
+                        }
+
                         if ($vendu > 1) {
                             echo $vendu . ' ' . $ctn . 's';
                         } else {
@@ -140,7 +144,6 @@ tr td:nth-child(4) {
 <!-- Recap -->
 <div class="recap">
     <h5>Récapitulatif des Stocks</h5>
-    
     
     <div>
         Entrée en stock :

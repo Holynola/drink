@@ -28,9 +28,10 @@ if (isset($_POST['username']) && ($_POST['password'])) {
             $_SESSION["contact"] = $resultat['contactU'];
 
             // Sauvegarde des données de connexion
+            $serviceLg = $resultat['serviceU'];
             $userLg = $resultat['idU'];
             $posteLg = $resultat['posteU'];
-            addLog($userLg, $posteLg);
+            addLog($serviceLg, $userLg, $posteLg);
 
             $url = "../pages/index.php";
             header("Location: " . $url);

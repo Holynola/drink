@@ -24,6 +24,7 @@ if (isset($_GET['idV'])) {
         $message = "L'inventaire a été supprimé avec succès.";
         $url = '../pages/invents.php?msg=' . urldecode($message);
         header("Location: " . $url);
+        exit;
     } catch (PDOException $e) {
         $mess = "Erreur ! Veuillez réessayer plus tard";
         $urls = '../pages/invents.php?msg=' . urldecode($mess);

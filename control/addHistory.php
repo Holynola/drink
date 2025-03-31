@@ -1,6 +1,6 @@
 <?php
 
-function addLog($userLg, $posteLg) {
+function addLog($serviceLg, $userLg, $posteLg) {
 
     include 'dbConf.php';
 
@@ -8,10 +8,11 @@ function addLog($userLg, $posteLg) {
     $datesaveLg = date('Y-m-d H:i:s');
 
     // Préparation de la requête SQL
-    $sql = "INSERT INTO logs (userLg, posteLg, datesaveLg) VALUES (:userLg, :posteLg, :datesaveLg)";
+    $sql = "INSERT INTO logs (serviceLg, userLg, posteLg, datesaveLg) VALUES (:serviceLg, :userLg, :posteLg, :datesaveLg)";
     $stmt = $bdd->prepare($sql);
 
     // Liaison des paramètres avec les valeurs réelles
+    $stmt->bindParam(':serviceLg', $serviceLg);
     $stmt->bindParam(':userLg', $userLg);
     $stmt->bindParam(':posteLg', $posteLg);
     $stmt->bindParam(':datesaveLg', $datesaveLg);

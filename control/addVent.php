@@ -62,6 +62,7 @@ if (isset($_POST['mtt']) && ($_POST['mtr'])) {
     } catch (PDOException $e) {
         $mess = "Erreur ! Veuillez réessayer plus tard";
         $urls = '../pages/invents.php?msg=' . urldecode($mess);
+        header("Location: " . $urls);
         die("Error executing SQL query: " . $e->getMessage());
     }
 

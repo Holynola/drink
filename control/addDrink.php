@@ -5,19 +5,34 @@ include 'mttConv.php';
 
 if (isset($_POST['imageName']) && ($_POST['design'])) {
 
-    // Conversion des montants en numérique
     // Prix de vente
     if (isset($_POST['prixv']) && ($_POST['prixv'] !== '')) {
         $prixv = $_POST['prixv'];
         $prixvB = mttConversion($prixv); // Prix de vente
+
+        if ($prixvB == 0) {
+            $prixvB = NULL;
+        }
     } else {
         $prixvB = NULL;
+    }
+
+    // Nombre de bouteilles
+    if (isset($_POST['nbrekit']) && ($_POST['nbrekit'] !== '')) {
+        $btekitB = $_POST['nbrekit'];
+    } else {
+        $btekitB = NULL; 
     }
 
     // Prix du kit
     if (isset($_POST['prixk']) && ($_POST['prixk'] !== '')) {
         $prixk = $_POST['prixk'];
         $prixkitB = mttConversion($prixk);
+
+        if ($prixvB == NULL) {
+            $prixvente = $prixkitB / $btekitB;
+            $prixvB = round($prixvente / 5) * 5;
+        }
     } else {
         $prixkitB = NULL;
     }
@@ -30,13 +45,6 @@ if (isset($_POST['imageName']) && ($_POST['design'])) {
     $emballageB = $_POST['typemb'];
     $nbreB = $_POST['nbrebout'];
     $kitB = $_POST['kit'];
-
-    if (isset($_POST['nbrekit']) && ($_POST['nbrekit'] !== '')) {
-        $btekitB = $_POST['nbrekit'];
-    } else {
-        $btekitB = NULL;
-        
-    }
 
     $statutB = 'ON';
     $savebyB = $_SESSION['idUser'];

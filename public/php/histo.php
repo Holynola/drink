@@ -38,7 +38,7 @@ tr td:nth-child(5) {
         </thead>
         <tbody>
             <?php
-                $conLg = "serviceLg = $service posteLg != 5 ORDER BY datesaveLg DESC";
+                $conLg = "(serviceLg = $service OR serviceLg = 3) AND posteLg != 5 ORDER BY datesaveLg DESC";
                 $donLg = recupDon('logs', $conLg);
 
                 foreach ($donLg as $lg) {

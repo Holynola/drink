@@ -19,7 +19,7 @@ include '../public/css/addUserCss.php';
                         <select name="getName" id="getName" required>
                             <option value=""></option>
                             <?php
-                                $conB = "serviceB = $service AND statutB = 'ON'";
+                                $conB = "serviceB = $service AND statutB = 'ON' ORDER BY designB";
                                 $donB = recupDon('boisson', $conB);
 
                                 foreach ($donB as $bs) {

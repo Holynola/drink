@@ -1,5 +1,6 @@
 <?php
 
+include '../control/alert.php';
 include '../control/infoSess.php';
 ?>
 <style>
@@ -36,21 +37,112 @@ tr td:nth-child(3) {
                 <th>Montant total</th>
                 <th>Montant versé</th>
                 <th>Manquant</th>
-                <th>Gérant</th>
+                <th>Gérant(e)</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
+            <?php
+                $conP = "serviceP = $service";
+                $donP = recupDon('points', $conP);
+
+                foreach ($donP as $pt) {
+            ?>
             <tr>
-                <td>20 Février 2025</td>
-                <td>200 000 FCFA</td>
-                <td>195 000 FCFA</td>
-                <td>5 000 FCFA</td>
-                <td>Charles Yao</td>
+                <!-- Date du point -->
                 <td>
-                    <a href="#">Plus de détails</a>
+                    <?php
+                        $datemade = $pt['datemadeP'];
+                        $dateFR = extraireDateFR($datemade);
+                        echo $dateFR;
+                    ?>
+                </td>
+                
+                <!-- Montant total -->
+                <td>
+                    <?php
+                        $mont = $pt['mttP'];
+                        $mtt = number_format($mont, 0, ' ', ' ') . ' FCFA';
+                        echo $mtt;
+                    ?>
+                </td>
+                
+                <!-- Montant versé -->
+                <td>
+                    <?php
+                        $montv = $pt['mtvP'];
+                        $mtv = number_format($montv, 0, ' ', ' ') . ' FCFA';
+                        echo $mtv;
+                    ?>
+                </td>
+                
+                <!-- Manquant -->
+                <td>
+                    <?php
+                        $mk = $pt['mankP'];
+                        $mank = number_format($mk, 0, ' ', ' ') . ' FCFA';
+                        echo $mank;
+                    ?>
+                </td>
+                
+                <!-- Gérant -->
+                <td>
+                    <?php
+                        $auteurN = $pt['getbyP'];
+                        $cond = "idU = $auteurN";
+                        $donU = recupDon('users', $cond);
+
+                        if ($donU) {
+                            foreach ($donU as $auteur) {
+                                echo $auteur['nomU'] . ' ' . $auteur['prenomsU'];
+                            }
+                        }
+                    ?>
+                </td>
+                
+                <td>
+                    <a href="infosPoint.php?id=<?=$pt['idP'];?>">Plus de détails</a>
                 </td>
             </tr>
+            <?php } ?>
         </tbody>
     </table>
+</div>
+
+<!-- Recap -->
+<div class="recap">
+    <h5>Récapitulatif des Points</h5>
+
+    <div>
+        Montant total :
+        <b class="red">
+            <?php
+                $sumMtt = sumDon('points', 'mttP', $conP);
+                $totalMtt = number_format($sumMtt, 0, ' ', ' ') . ' FCFA';
+                echo $totalMtt;
+            ?>
+        </b>
+    </div>
+
+    <div>
+        Montant versé :
+        <b class="red">
+            <?php
+                $sumMtv = sumDon('points', 'mtvP', $conP);
+                $totalMtv = number_format($sumMtv, 0, ' ', ' ') . ' FCFA';
+                echo $totalMtv;
+            ?>
+        </b>
+    </div>
+
+    <div>
+        Manquant total :
+        <b class="blue">
+            <?php
+                $sumMk = sumDon('points', 'mankP', $conP);
+                $totalMk = number_format($sumMk, 0, ' ', ' ') . ' FCFA';
+                echo $totalMk;
+            ?>
+        </b>
+    </div>
 </div>

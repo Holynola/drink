@@ -108,3 +108,55 @@ tr td:nth-child(4) {
         </tbody>
     </table>
 </div>
+
+<!-- Recap -->
+<div class="recap">
+    <h5>Récapitulatif des Consignations</h5>
+
+    <div>
+        Nombre total :
+        <b class="red">
+            <?php
+                $sumBte = sumDon('consign', 'nbrebteCs', $conC);
+
+                if ($sumBte) {
+                    echo $sumBte . ' bouteilles';    
+                } else {
+                    echo '0 bouteilles';
+                }
+            ?>
+        </b>
+    </div>
+
+    <div>
+        Nombre récupéré :
+        <b class="red">
+            <?php
+                $conCo = "serviceCs = $service AND statutCs = 'OK'";
+                $sumOk = sumDon('consign', 'nbrebteCs', $conCo);
+
+                if ($sumOk) {
+                    echo $sumOk . ' bouteilles';
+                } else {
+                    echo '0 bouteilles';
+                }
+            ?>
+        </b>    
+    </div>
+
+    <div>
+        En stock :
+        <b class="blue">
+            <?php
+                $conCk = "serviceCs = $service AND statutCs = 'KO'";
+                $somKo = sumDon('consign', 'nbrebteCs', $conCk);
+
+                if ($somKo) {
+                    echo $somKo . ' bouteilles';    
+                } else {
+                    echo '0 bouteilles';
+                }
+            ?>
+        </b>
+    </div>
+</div>

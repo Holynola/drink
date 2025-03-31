@@ -112,7 +112,7 @@ tr td:nth-child(4) {
                     <a href="infosVent.php?id=<?= $iv['idV']; ?>">Plus de détails</a>
                 </td>
             </tr>
-        <?php } ?>
+            <?php } ?>
         </tbody>
     </table>
 </div>
