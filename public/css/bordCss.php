@@ -70,6 +70,11 @@
     width: 30%;
 }
 
+.r-info {
+    border-left: 2px solid;
+    padding-left: 10px;
+}
+
 .r-info h3 {
     color: var(--rouge);
     text-align: center;
@@ -113,6 +118,7 @@
         margin-top: 50px;
         display: flex;
         justify-content: center;
+        padding-bottom: 50px;
     }
 }
 

@@ -67,6 +67,9 @@ echo <<<HTML
                 </a>
                 <span class="tooltip">Tableau de bord</span>
             </li>
+HTML;
+            if (($_SESSION['poste'] !== 3) && ($_SESSION['poste'] !== 4)) {
+echo <<<HTML
 
             <li>
                 <a href="points.php">
@@ -83,6 +86,11 @@ echo <<<HTML
                 </a>
                 <span class="tooltip">Bénéfices</span>
             </li>
+HTML;
+            }
+
+            if ($_SESSION['poste'] !== 4) {
+echo <<<HTML
 
             <li>
                 <a href="invents.php">
@@ -91,6 +99,9 @@ echo <<<HTML
                 </a>
                 <span class="tooltip">Inventaires</span>
             </li>
+HTML;
+            }
+echo <<<HTML
 
             <li>
                 <a href="stocks.php">
@@ -107,7 +118,9 @@ echo <<<HTML
                 </a>
                 <span class="tooltip">Boissons</span>
             </li>
-
+HTML;
+            if (($_SESSION['poste'] !== 1) && ($_SESSION['poste'] !== 2)) {
+echo <<<HTML
             <li>
                 <a href="consigns.php">
                     <i class="fa-solid fa-lock"></i>
@@ -115,7 +128,9 @@ echo <<<HTML
                 </a>
                 <span class="tooltip">Consignations</span>
             </li>
-
+HTML;
+            }
+echo <<<HTML
             <li>
                 <a href="cmdes.php">
                     <i class="fa-solid fa-handshake-simple"></i>
@@ -139,7 +154,9 @@ echo <<<HTML
                 </a>
                 <span class="tooltip">Fournisseurs</span>
             </li>
-
+HTML;
+            if (($_SESSION['poste'] !== 3) && ($_SESSION['poste'] !== 4)) {
+echo <<<HTML
             <li>
                 <a href="users.php">
                     <i class="fa-solid fa-users"></i>
@@ -163,7 +180,9 @@ echo <<<HTML
                 </a>
                 <span class="tooltip">Revenir à l'acceuil</span>
             </li>
-
+HTML;
+            }
+echo <<<HTML
             <li class="profile">
                 <div class="profile_details">
                     <div class="profile_content">

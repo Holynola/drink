@@ -17,7 +17,9 @@ include '../public/css/bordCss.php';
 <div class="content">
     <div class="bord">
         <div class="bord-left">
-
+            <?php
+                if (($_SESSION['poste'] !== 3) && ($_SESSION['poste'] !== 4)) {
+            ?>
             <!-- Points -->
             <div class="card">
                 <div class="card-header">
@@ -109,6 +111,7 @@ include '../public/css/bordCss.php';
                     </div>
                 </div>
             </div>
+        <?php } ?>
 
             <!-- Inventaires -->
             <div class="card">
