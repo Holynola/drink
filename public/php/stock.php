@@ -3,6 +3,8 @@
 include '../control/alert.php';
 include '../control/infoSess.php';
 include '../control/recupStk.php';
+
+include 'triCon.php';
 ?>
 <style>
 
@@ -23,26 +25,63 @@ tr td:nth-child(4) {
 </div>
 
 <div class="add-tri">
-    <div class="tri-div">
-        <span>Trier :</span>
-        <select name="choix" id="choix">
-            <option value=""></option>
-            <option value="tous">Tous</option>
-            <option value="">Lieu de service</option>
-        </select>
-
-        <select name="result" id="result">
-            <option value=""></option>
-        </select>
-    </div>
+    <?php include 'triDiv.php'; ?>
 
     <div class="add-btn">
-        <a href="#" class="btn-link">Trier par stock</a>
+        <a href="#" id="triStk" class="btn-link">Trier par stock</a>
         <a href="addStock.php" class="btn-link">Ajouter un stock</a>
     </div>
 </div>
 
-<div class="content">
+<?php include 'filter.php'; ?>
+
+<script src="../public/js/getTri.js"></script>
+<script src="../public/js/getFilter.js"></script>
+<script src="../public/js/getStock.js"></script>
+
+<div class="content" id="stock">
+    <!-- Condition de tri du stock -->
+    <?php
+        if (!empty($divCon)) {
+            $conS = "SELECT 
+                        s.serviceSt,
+                        s.BoissonSt,
+                        b.designB,
+                        b.contenantB,
+                        SUM(s.qteSt) AS total_qteSt
+                    FROM 
+                        stock s
+                    LEFT JOIN 
+                        boisson b ON s.BoissonSt = b.idB
+                    WHERE 
+                        s.serviceSt = $service AND s.datesaveSt LIKE '{$divCon}%'
+                    GROUP BY 
+                        s.serviceSt, 
+                        s.BoissonSt";
+
+            $conSt = "serviceSt = $service AND datesaveSt LIKE '{$divCon}%'";
+            $conPr = "servicePr = $service AND datesavePr LIKE '{$divCon}%'";
+        } else {
+            $conS = "SELECT 
+                        s.serviceSt,
+                        s.BoissonSt,
+                        b.designB,
+                        b.contenantB,
+                        SUM(s.qteSt) AS total_qteSt
+                    FROM 
+                        stock s
+                    LEFT JOIN 
+                        boisson b ON s.BoissonSt = b.idB
+                    WHERE 
+                        s.serviceSt = $service
+                    GROUP BY 
+                        s.serviceSt, 
+                        s.BoissonSt";
+
+            $conSt = "serviceSt = $service";
+            $conPr = "servicePr = $service";
+        }
+    ?>
     <table>
         <thead>
             <tr>
@@ -55,21 +94,6 @@ tr td:nth-child(4) {
         </thead>
         <tbody>
             <?php
-                $conS = "SELECT 
-                            s.serviceSt,
-                            s.BoissonSt,
-                            b.designB,
-                            b.contenantB,
-                            SUM(s.qteSt) AS total_qteSt
-                        FROM 
-                            stock s
-                        LEFT JOIN 
-                            boisson b ON s.BoissonSt = b.idB
-                        WHERE 
-                            s.serviceSt = $service
-                        GROUP BY 
-                            s.serviceSt, 
-                            s.BoissonSt";
 
                 $donS = recupStock($conS);
 
@@ -149,7 +173,6 @@ tr td:nth-child(4) {
         Entrée en stock :
         <b class="red">
             <?php
-                $conSt = "serviceSt = $service";
                 $enstock = sumDon('stock', 'qteSt', $conSt);
                 
                 if ($enstock) {
@@ -165,7 +188,6 @@ tr td:nth-child(4) {
         Sortie du stock :
         <b class="red">
             <?php
-                $conPr = "servicePr = $service";
                 $sortie = sumDon('produit', 'qtePr', $conPr);
                 
                 if ($sortie) {

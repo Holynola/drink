@@ -8,6 +8,7 @@ include '../control/dbConf.php';
 include '../control/recupAll.php';
 include '../control/infoSess.php';
 include '../control/affDate.php';
+include '../control/affMois.php';
 include '../control/addHour.php';
 include '../control/affPost.php';
 include '../control/affCont.php';

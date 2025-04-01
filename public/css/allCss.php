@@ -226,7 +226,7 @@ td a {
 }
 
 .tri-div {
-    width: 300px;
+    width: 350px;
     display: flex;
     align-items: center;
 }
@@ -246,14 +246,26 @@ td a {
     margin: 0 10px;
 }
 
+.add-btn {
+    width: 450px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.add-btn a {
+    margin: 0 5px;
+}
+
 .add-filter {
     font-size: 18px;
     font-weight: 550;
-    margin: 10px 0;
+    margin: 10px 0 20px;
 }
 
 .add-filter span:last-child {
-    color: var(--marron);
+    color: var(--bleu);
     font-size: 20px;
 }
 
@@ -279,6 +291,11 @@ td a {
     .add-filter span:last-child {
         font-size: 18px;
     }
+
+    .add-btn {
+        margin-top: 20px;
+        justify-content: space-around;
+    }
 }
 
 @media (max-width: 400px) {
@@ -303,6 +320,11 @@ td a {
         display: flex;
         justify-content: center;
         flex-direction: column;
+        margin-bottom: 30px;
+    }
+
+    .add-btn a {
+        margin: 14px 0 0;
     }
 }
 

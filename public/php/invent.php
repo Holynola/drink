@@ -2,6 +2,8 @@
 
 include '../control/alert.php';
 include '../control/infoSess.php';
+
+include 'triCon.php';
 ?>
 
 <style>
@@ -30,7 +32,22 @@ tr td:nth-child(4) {
     </div>
 </div>
 
+<?php include 'filter.php'; ?>
+
+<script src="../public/js/getTri.js"></script>
+<script src="../public/js/getFilter.js"></script>
+
 <div class="content">
+    <!-- Condition de tri des inventaires -->
+    <?php
+        if (!empty($divCon)) {
+            $conI = "serviceV = $service AND datemadeV LIKE '{$divCon}%'";
+            $conA = "serviceR = $service AND datemadeR LIKE '{$divCon}%'";
+        } else {
+            $conI = "serviceV = $service";
+            $conA = "serviceR = $service";
+        }
+    ?>
     <table>
         <thead>
             <tr>
@@ -44,7 +61,6 @@ tr td:nth-child(4) {
         </thead>
         <tbody>
             <?php
-                $conI = "serviceV = $service";
                 $donI = recupDon('inventory', $conI);
 
                 foreach ($donI as $iv) {
@@ -139,7 +155,6 @@ tr td:nth-child(4) {
                 $sumMtrf = sumDon('inventory', 'mtrV', $conI); // Montants reçus
 
                 // Autres règlements
-                $conA = "serviceR = $service";
                 $sumMtra = sumDon('reglement', 'mttR', $conA);
 
                 $sumMtr = $sumMtrf + $sumMtra;

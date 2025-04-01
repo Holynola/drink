@@ -2,6 +2,8 @@
 
 include '../control/alert.php';
 include '../control/infoSess.php';
+
+include 'triCon.php';
 ?>
 <style>
 
@@ -29,7 +31,20 @@ tr td:nth-child(4) {
     </div>
 </div>
 
+<?php include 'filter.php'; ?>
+
+<script src="../public/js/getTri.js"></script>
+<script src="../public/js/getFilter.js"></script>
+
 <div class="content">
+    <!-- Condition de tri des commandes -->
+    <?php
+        if (!empty($divCon)) {
+            $conC = "serviceC = $service AND datemadeC LIKE '{$divCon}%'";
+        } else {
+            $conC = "serviceC = $service";
+        }
+    ?>
     <table>
         <thead>
             <tr>
@@ -43,7 +58,6 @@ tr td:nth-child(4) {
         </thead>
         <tbody>
             <?php
-                $conC = "serviceC = $service";
                 $donC = recupDon('commande', $conC);
 
                 foreach ($donC as $cmd) {

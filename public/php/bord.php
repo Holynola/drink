@@ -4,6 +4,8 @@ include '../control/infoSess.php';
 include '../control/recupStk.php';
 
 include '../public/css/bordCss.php';
+
+include 'triCon.php';
 ?>
 
 <div class="top">
@@ -14,7 +16,38 @@ include '../public/css/bordCss.php';
     <?php include 'triDiv.php'; ?>
 </div>
 
+<?php include 'filter.php'; ?>
+
+<script src="../public/js/getTri.js"></script>
+<script src="../public/js/getFilter.js"></script>
+
 <div class="content">
+    <!-- Condition de tri de chaque table -->
+    <?php
+        if (!empty($divCon)) {
+            $conP = "serviceP = $service AND datemadeP LIKE '{$divCon}%'";
+            $conBf = "serviceBf = $service AND datesaveBf LIKE '{$divCon}%'";
+            $conI = "serviceV = $service AND datemadeV LIKE '{$divCon}%'";
+            $conA = "serviceR = $service AND datemadeR LIKE '{$divCon}%'";
+            $conSt = "serviceSt = $service AND datesaveSt LIKE '{$divCon}%'";
+            $conPr = "servicePr = $service AND datesavePr LIKE '{$divCon}%'";
+            $conC = "serviceC = $service AND datemadeC LIKE '{$divCon}%'";
+            $conAc = "servicePay = $service AND tablePay = 'commande' AND datemadePay LIKE '{$divCon}%'";
+            $con = "serviceDp = $service AND datemadeDp LIKE '{$divCon}%'";
+            $conAd = "servicePay = $service AND tablePay = 'depense' AND datemadePay LIKE '{$divCon}%'";
+        } else {
+            $conP = "serviceP = $service";
+            $conBf = "serviceBf = $service";
+            $conI = "serviceV = $service";
+            $conA = "serviceR = $service";
+            $conSt = "serviceSt = $service";
+            $conPr = "servicePr = $service";
+            $conC = "serviceC = $service";
+            $conAc = "servicePay = $service AND tablePay = 'commande'";
+            $con = "serviceDp = $service";
+            $conAd = "servicePay = $service AND tablePay = 'depense'";
+        }
+    ?>
     <div class="bord">
         <div class="bord-left">
             <?php
@@ -30,7 +63,6 @@ include '../public/css/bordCss.php';
                         Montant total :
                         <b class="red">
                             <?php
-                                $conP = "serviceP = $service";
                                 $sumMtt = sumDon('points', 'mttP', $conP);
                                 $totalMtt = number_format($sumMtt, 0, ' ', ' ') . ' FCFA';
                                 echo $totalMtt;
@@ -76,7 +108,6 @@ include '../public/css/bordCss.php';
                         Montant des ventes :
                         <b class="red">
                             <?php
-                                $conBf = "serviceBf = $service";
                                 $sumMtv = sumDon('benefice', 'mtvBf', $conBf);
                                 $totalMtv = number_format($sumMtv, 0, ' ', ' ') . ' FCFA';
                                 echo $totalMtv;
@@ -123,7 +154,6 @@ include '../public/css/bordCss.php';
                         Montant des recettes :
                         <b class="red">
                             <?php
-                                $conI = "serviceV = $service";
                                 $sumMtt = sumDon('inventory', 'mttV', $conI);
                                 $totalMtt = number_format($sumMtt, 0, ' ', ' ') . ' FCFA';
                                 echo $totalMtt;
@@ -138,7 +168,6 @@ include '../public/css/bordCss.php';
                                 $sumMtrf = sumDon('inventory', 'mtrV', $conI); // Montants reçus
 
                                 // Autres règlements
-                                $conA = "serviceR = $service";
                                 $sumMtra = sumDon('reglement', 'mttR', $conA);
 
                                 $sumMtr = $sumMtrf + $sumMtra;
@@ -175,7 +204,6 @@ include '../public/css/bordCss.php';
                         Entrée en stock :
                         <b class="red">
                             <?php
-                                $conSt = "serviceSt = $service";
                                 $enstock = sumDon('stock', 'qteSt', $conSt);
                                 
                                 if ($enstock) {
@@ -191,7 +219,6 @@ include '../public/css/bordCss.php';
                         Sortie du stock :
                         <b class="red">
                             <?php
-                                $conPr = "servicePr = $service";
                                 $sortie = sumDon('produit', 'qtePr', $conPr);
                                 
                                 if ($sortie) {
@@ -229,7 +256,6 @@ include '../public/css/bordCss.php';
                         Montant total :
                         <b class="red">
                             <?php
-                                $conC = "serviceC = $service";
                                 $sumMtt = sumDon('commande', 'mttC', $conC);
                                 $totalMtt = number_format($sumMtt, 0, ' ', ' ') . ' FCFA';
                                 echo $totalMtt;
@@ -243,8 +269,7 @@ include '../public/css/bordCss.php';
                             <?php
                                 $sumMtrf = sumDon('commande', 'mtrC', $conC); // Premiers paiements
                                 // Autres paiements
-                                $conA = "servicePay = $service AND tablePay = 'commande'";
-                                $sumMtra = sumDon('paiement', 'mttPay', $conA); 
+                                $sumMtra = sumDon('paiement', 'mttPay', $conAc); 
 
                                 $sumMtr = $sumMtrf + $sumMtra;
                                 $totalMtr = number_format($sumMtr, 0, ' ', ' ') . ' FCFA';
@@ -280,7 +305,6 @@ include '../public/css/bordCss.php';
                         Montant total :
                         <b class="red">
                             <?php
-                                $con = "serviceDp = $service";
                                 $sumMtt = sumDon('depense', 'mttDp', $con);
                                 $totalMtt = number_format($sumMtt, 0, ' ', ' ') . ' FCFA';
                                 echo $totalMtt;
@@ -294,8 +318,7 @@ include '../public/css/bordCss.php';
                             <?php
                                 $sumMtrf = sumDon('depense', 'mtrDp', $con); // Premiers paiements
                                 // Autres paiements
-                                $conA = "servicePay = $service AND tablePay = 'depense'";
-                                $sumMtra = sumDon('paiement', 'mttPay', $conA); 
+                                $sumMtra = sumDon('paiement', 'mttPay', $conAd); 
 
                                 $sumMtr = $sumMtrf + $sumMtra;
                                 $totalMtr = number_format($sumMtr, 0, ' ', ' ') . ' FCFA';

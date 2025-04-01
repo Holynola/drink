@@ -2,6 +2,8 @@
 
 include '../control/alert.php';
 include '../control/infoSess.php';
+
+include 'triCon.php';
 ?>
 <style>
 
@@ -29,7 +31,20 @@ tr td:nth-child(3) {
     </div>
 </div>
 
+<?php include 'filter.php'; ?>
+
+<script src="../public/js/getTri.js"></script>
+<script src="../public/js/getFilter.js"></script>
+
 <div class="content">
+    <!-- Condition de tri de la table Point -->
+    <?php
+        if (!empty($divCon)) {
+            $conP = "serviceP = $service AND datemadeP LIKE '{$divCon}%'";
+        } else {
+            $conP = "serviceP = $service";
+        }
+    ?>
     <table>
         <thead>
             <tr>
@@ -43,7 +58,6 @@ tr td:nth-child(3) {
         </thead>
         <tbody>
             <?php
-                $conP = "serviceP = $service";
                 $donP = recupDon('points', $conP);
 
                 foreach ($donP as $pt) {

@@ -3,6 +3,7 @@
 include '../control/infoSess.php';
 include '../control/recupStk.php';
 
+include 'triCon.php';
 ?>
 
 <style>
@@ -27,7 +28,48 @@ tr td:nth-child(4) {
     <?php include 'triDiv.php'; ?>
 </div>
 
+<?php include 'filter.php'; ?>
+
+<script src="../public/js/getTri.js"></script>
+<script src="../public/js/getFilter.js"></script>
+
 <div class="content">
+    <!-- Condition de tri des bénéfices -->
+    <?php
+        if (!empty($divCon)) {
+            $conB = "SELECT 
+                        serviceBf, 
+                        ventBf, 
+                        datesaveBf, 
+                        SUM(mtvBf) AS total_mtv, 
+                        SUM(mtaBf) AS total_mta, 
+                        SUM(mtvBf - mtaBf) AS total_benef
+                    FROM 
+                        benefice
+                    WHERE
+                        serviceBf = $service AND datesaveBf LIKE '{$divCon}%'
+                    GROUP BY 
+                        ventBf, serviceBf";
+
+            $conBf = "serviceBf = $service AND datesaveBf LIKE '{$divCon}%'";
+        } else {
+            $conB = "SELECT 
+                        serviceBf, 
+                        ventBf, 
+                        datesaveBf, 
+                        SUM(mtvBf) AS total_mtv, 
+                        SUM(mtaBf) AS total_mta, 
+                        SUM(mtvBf - mtaBf) AS total_benef
+                    FROM 
+                        benefice
+                    WHERE
+                        serviceBf = $service
+                    GROUP BY 
+                        ventBf, serviceBf";
+
+            $conBf = "serviceBf = $service";
+        }
+    ?>
     <table>
         <thead>
             <tr>
@@ -40,19 +82,6 @@ tr td:nth-child(4) {
         </thead>
         <tbody>
             <?php
-                $conB = "SELECT 
-                            serviceBf, 
-                            ventBf, 
-                            datesaveBf, 
-                            SUM(mtvBf) AS total_mtv, 
-                            SUM(mtaBf) AS total_mta, 
-                            SUM(mtvBf - mtaBf) AS total_benef
-                        FROM 
-                            benefice
-                        WHERE
-                            serviceBf = $service
-                        GROUP BY 
-                            ventBf, serviceBf";
                 $donB = recupStock($conB);
 
                 foreach ($donB as $benef) {
@@ -111,7 +140,6 @@ tr td:nth-child(4) {
         Montant total des ventes :
         <b class="red">
             <?php
-                $conBf = "serviceBf = $service";
                 $sumMtv = sumDon('benefice', 'mtvBf', $conBf);
                 $totalMtv = number_format($sumMtv, 0, ' ', ' ') . ' FCFA';
                 echo $totalMtv;

@@ -1,6 +1,8 @@
 <?php
 
 include '../control/infoSess.php';
+
+include 'triCon.php';
 ?>
 
 <style>
@@ -25,7 +27,20 @@ tr td:nth-child(5) {
     <?php include 'triDiv.php'; ?>
 </div>
 
+<?php include 'filter.php'; ?>
+
+<script src="../public/js/getTri.js"></script>
+<script src="../public/js/getFilter.js"></script>
+
 <div class="content">
+    <!-- Condition de tri des hsitoriques de connexion -->
+    <?php
+        if (!empty($divCon)) {
+            $conLg = "(serviceLg = $service OR serviceLg = 3) AND posteLg != 5 AND datesaveLg LIKE '{$divCon}%' ORDER BY datesaveLg DESC";
+        } else {
+            $conLg = "(serviceLg = $service OR serviceLg = 3) AND posteLg != 5 ORDER BY datesaveLg DESC";
+        }
+    ?>
     <table>
         <thead>
             <tr>
@@ -38,7 +53,6 @@ tr td:nth-child(5) {
         </thead>
         <tbody>
             <?php
-                $conLg = "(serviceLg = $service OR serviceLg = 3) AND posteLg != 5 ORDER BY datesaveLg DESC";
                 $donLg = recupDon('logs', $conLg);
 
                 foreach ($donLg as $lg) {

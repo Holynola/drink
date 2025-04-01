@@ -2,6 +2,8 @@
 
 include '../control/alert.php';
 include '../control/infoSess.php';
+
+include 'triCon.php';
 ?>
 
 <style>
@@ -30,7 +32,24 @@ tr td:nth-child(4) {
     </div>
 </div>
 
+<?php include 'filter.php'; ?>
+
+<script src="../public/js/getTri.js"></script>
+<script src="../public/js/getFilter.js"></script>
+
 <div class="content">
+    <!-- Condition de tri des consignations -->
+    <?php
+        if (!empty($divCon)) {
+            $conC = "serviceCs = $service AND datesaveCs LIKE '{$divCon}%'";
+            $conCo = "serviceCs = $service AND statutCs = 'OK' AND datesaveCs LIKE '{$divCon}%'";
+            $conCk = "serviceCs = $service AND statutCs = 'KO' AND datesaveCs LIKE '{$divCon}%'";
+        } else {
+            $conC = "serviceCs = $service";
+            $conCo = "serviceCs = $service AND statutCs = 'OK'";
+            $conCk = "serviceCs = $service AND statutCs = 'KO'";
+        }
+    ?>
     <table>
         <thead>
             <tr>
@@ -44,7 +63,6 @@ tr td:nth-child(4) {
         </thead>
         <tbody>
             <?php
-                $conC = "serviceCs = $service";
                 $donC = recupDon('consign', $conC);
 
                 foreach ($donC as $csn) {
@@ -132,7 +150,6 @@ tr td:nth-child(4) {
         Nombre récupéré :
         <b class="red">
             <?php
-                $conCo = "serviceCs = $service AND statutCs = 'OK'";
                 $sumOk = sumDon('consign', 'nbrebteCs', $conCo);
 
                 if ($sumOk) {
@@ -148,7 +165,6 @@ tr td:nth-child(4) {
         En stock :
         <b class="blue">
             <?php
-                $conCk = "serviceCs = $service AND statutCs = 'KO'";
                 $somKo = sumDon('consign', 'nbrebteCs', $conCk);
 
                 if ($somKo) {

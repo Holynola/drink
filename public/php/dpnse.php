@@ -2,6 +2,8 @@
 
 include '../control/alert.php';
 include '../control/infoSess.php';
+
+include 'triCon.php';
 ?>
 <style>
 
@@ -29,7 +31,22 @@ tr td:nth-child(4) {
     </div>
 </div>
 
+<?php include 'filter.php'; ?>
+
+<script src="../public/js/getTri.js"></script>
+<script src="../public/js/getFilter.js"></script>
+
 <div class="content">
+    <!-- Condition de tri des dépenses -->
+    <?php
+        if (!empty($divCon)) {
+            $con = "serviceDp = $service AND datemadeDp LIKE '{$divCon}%'";
+            $conA = "servicePay = $service AND tablePay = 'depense' AND datemadePay LIKE '{$divCon}%'";
+        } else {
+            $con = "serviceDp = $service";
+            $conA = "servicePay = $service AND tablePay = 'depense'";
+        }
+    ?>
     <table>
         <thead>
             <tr>
@@ -43,7 +60,6 @@ tr td:nth-child(4) {
         </thead>
         <tbody>
             <?php
-                $con = "serviceDp = $service";
                 $donD = recupDon('depense', $con);
 
                 foreach ($donD as $dp) {
@@ -125,7 +141,6 @@ tr td:nth-child(4) {
             <?php
                 $sumMtrf = sumDon('depense', 'mtrDp', $con); // Premiers paiements
                 // Autres paiements
-                $conA = "servicePay = $service AND tablePay = 'depense'";
                 $sumMtra = sumDon('paiement', 'mttPay', $conA); 
 
                 $sumMtr = $sumMtrf + $sumMtra;
