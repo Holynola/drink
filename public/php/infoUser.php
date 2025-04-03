@@ -131,7 +131,7 @@ include '../public/css/infoCss.php';
                     <span class="title">Action :</span><br>
                     <span class="perso"><?= $mdf['actionM']; ?></span><br>
 
-                    <span class="title">Auteur :</span>
+                    <span class="title">Auteur :</span><br>
                     <span class="perso">
                         <?php
                             $auteurN = $mdf['auteurM'];

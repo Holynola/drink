@@ -30,4 +30,24 @@ $(document).ready(function() {
     $("#btnReg").click(function() {
         $("#mdfReg").toggle();
     });
+
+    $("#btnPrix").click(function() {
+        $("#mdfPrix").toggle();
+
+        var kit = $('#kit').val();
+
+        if (kit == 'yes') {
+            $("#prixkit").show();
+            $("#prixk").prop('required', true);
+
+            $("#btekit").show();
+            $("#nbrekit").prop('required', true);
+        } else {
+            $("#prixkit").hide();
+            $("#prixk").prop('required', false);
+
+            $("#btekit").hide();
+            $("#nbrekit").prop('required', false);
+        }
+    });
 });
