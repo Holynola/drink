@@ -36,8 +36,13 @@ include '../public/css/addCmdeCss.php';
                     </div>
 
                     <div>
-                        <label for="qte">Quantité</label>
+                        <label for="qte">Nombre de casiers/cartons</label>
                         <input type="number" name="qte" id="qte">
+                    </div>
+
+                    <div>
+                        <label for="nbrebtle">Nombre de bouteilles par casier/carton</label>
+                        <input type="number" name="nbrebtle" id="nbrebtle">
                     </div>
 
                     <div style="margin: 20px 0 30px;">

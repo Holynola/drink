@@ -18,6 +18,7 @@ if ($lignes !== false) {
             'boissonText' => $ligne['boissonText'],
             'prix' => $ligne['prix'], // Prix du casier
             'quantite' => $ligne['quantite'],
+            'nbrebtle' => $ligne['nbrebtle'],
             'montant' => $ligne['montant']
         ];
     }
@@ -31,7 +32,7 @@ for ($i = 0; $i < $ligneCount; $i++) {
     $ligne = $tabAsk[$i];
 
     $serviceSt; // Lieu de service
-    $nbrebtleSt; // Nombre de bouteilles par casier
+    $nbrebtleSt = $ligne['nbrebtle']; // Nombre de bouteilles par casier
 
     // Boissons
     $idB = $ligne['boissonId']; // ID Boisson
@@ -39,7 +40,6 @@ for ($i = 0; $i < $ligneCount; $i++) {
     $donB = recupDon('boisson', $conB);
     foreach ($donB as $bs) {
         $serviceSt = $bs['serviceB'];
-        $nbrebtleSt = $bs['nbreB'];
     }
 
     $nbrecarsSt = $ligne['quantite']; // Nombre de casiers

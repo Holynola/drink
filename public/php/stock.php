@@ -57,7 +57,7 @@ tr td:nth-child(4) {
                         s.serviceSt = $service AND s.datesaveSt LIKE '{$divCon}%'
                     GROUP BY 
                         s.serviceSt, 
-                        s.BoissonSt";
+                        b.designB";
 
             $conSt = "serviceSt = $service AND datesaveSt LIKE '{$divCon}%'";
             $conPr = "servicePr = $service AND datesavePr LIKE '{$divCon}%'";
@@ -76,7 +76,7 @@ tr td:nth-child(4) {
                         s.serviceSt = $service
                     GROUP BY 
                         s.serviceSt, 
-                        s.BoissonSt";
+                        b.designB";
 
             $conSt = "serviceSt = $service";
             $conPr = "servicePr = $service";

@@ -83,11 +83,6 @@ include '../public/css/addUserCss.php';
                 </div>
 
                 <div>
-                    <label for="nbrebout">Nombre de bouteilles par casier</label><br>
-                    <input type="number" name="nbrebout" id="nbrebout" maxlength="3" required>
-                </div>
-
-                <div>
                     <label for="kit">Vendue en kit ?</label><br>
                     <select name="kit" id="kit" required>
                         <option value=""></option>

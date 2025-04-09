@@ -146,10 +146,6 @@ $btlekit; // Nombre de boisson par kit
                     $emb = $em['libelleEm'];
                 }
             ?>
-            <div class="left-box">
-                <span><?= "Nombre de " . $ctn . "s par " . $emb . "s :"; ?></span>
-                <span><?= $bs['nbreB']; ?></span>
-            </div>
 
             <div class="left-box">
                 <span>Vendu en kit :</span>

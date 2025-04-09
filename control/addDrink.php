@@ -17,7 +17,7 @@ if (isset($_POST['imageName']) && ($_POST['design'])) {
         $prixvB = NULL;
     }
 
-    // Nombre de bouteilles
+    // Nombre de bouteilles par kit
     if (isset($_POST['nbrekit']) && ($_POST['nbrekit'] !== '')) {
         $btekitB = $_POST['nbrekit'];
     } else {
@@ -43,14 +43,13 @@ if (isset($_POST['imageName']) && ($_POST['design'])) {
     $typeB = $_POST['typeb'];
     $contenantB = $_POST['typec'];
     $emballageB = $_POST['typemb'];
-    $nbreB = $_POST['nbrebout'];
     $kitB = $_POST['kit'];
 
     $statutB = 'ON';
     $savebyB = $_SESSION['idUser'];
     $datesaveB = date('Y-m-d H:i:s');
 
-    $sql = "INSERT INTO boisson (serviceB, imageB, designB, prixvB, typeB, contenantB, emballageB, nbreB, kitB, prixkitB, btekitB, statutB, savebyB, datesaveB) VALUES (:serviceB, :imageB, :designB, :prixvB, :typeB, :contenantB, :emballageB, :nbreB, :kitB, :prixkitB, :btekitB, :statutB, :savebyB, :datesaveB)";
+    $sql = "INSERT INTO boisson (serviceB, imageB, designB, prixvB, typeB, contenantB, emballageB, kitB, prixkitB, btekitB, statutB, savebyB, datesaveB) VALUES (:serviceB, :imageB, :designB, :prixvB, :typeB, :contenantB, :emballageB, :kitB, :prixkitB, :btekitB, :statutB, :savebyB, :datesaveB)";
 
     $stmt = $bdd->prepare($sql);
 
@@ -61,7 +60,6 @@ if (isset($_POST['imageName']) && ($_POST['design'])) {
     $stmt->bindParam(':typeB', $typeB);
     $stmt->bindParam(':contenantB', $contenantB);
     $stmt->bindParam(':emballageB', $emballageB);
-    $stmt->bindParam(':nbreB', $nbreB);
     $stmt->bindParam(':kitB', $kitB);
     $stmt->bindParam(':prixkitB', $prixkitB);
     $stmt->bindParam(':btekitB', $btekitB);

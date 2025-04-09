@@ -10,10 +10,14 @@ $(document).ready(function() {
         var boissonText = $('#getName option:selected').text(); // Récupère le texte de l'option
         var prix = parseFloat($('#prixa').val()); // Convertir en nombre
         var quantite = parseInt($('#qte').val()); // Convertir en nombre
+        var nbrebtle = parseInt($('#nbrebtle').val()); // Convertir en nombre
 
-        // Vérifier si tous les champs sont remplis
-        if (boissonId === "" || isNaN(prix) || isNaN(quantite)) {
-            alert("Veuillez remplir tous les champs avant d'ajouter.");
+        // Vérifier si tous les champs sont remplis et différents de zéro
+        if (boissonId === "" || 
+            isNaN(prix) || prix <= 0 || 
+            isNaN(quantite) || quantite <= 0 || 
+            isNaN(nbrebtle) || nbrebtle <= 0) {
+            alert("Veuillez remplir tous les champs avec des valeurs valides et supérieures à zéro.");
             return; // Bloquer l'exécution
         }
 
@@ -38,7 +42,7 @@ $(document).ready(function() {
                     <p>${prix} FCFA</p>
                 </div>
                 <div>
-                    <span>Quantité</span>
+                    <span>Nombre de casiers/cartons</span>
                     <p>${quantite}</p>
                 </div>
                 <div class="red">
@@ -57,6 +61,7 @@ $(document).ready(function() {
             boissonText: boissonText, // Envoyer le texte de l'option
             prix: prix,
             quantite: quantite,
+            nbrebtle: nbrebtle,
             montant: montant
         });
 
@@ -67,6 +72,7 @@ $(document).ready(function() {
         $('#getName').val('');
         $('#prixa').val('');
         $('#qte').val('');
+        $('#nbrebtle').val('');
     });
 
     // Intercepter la soumission du formulaire

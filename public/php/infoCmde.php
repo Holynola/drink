@@ -348,7 +348,7 @@ $point; // Récupérer la valeur de la colonne point
                 </p>
             </div>
             <div>
-                <span>Quantité</span>
+                <span>Nombre de casiers/cartons</span>
                 <p>
                     <?php
                         $qte = $sto['nbrecarsSt'];
