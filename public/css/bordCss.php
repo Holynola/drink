@@ -2,6 +2,7 @@
 
 .bord {
     display: flex;
+    align-items: flex-start; /* Au lieu de stretch */
 }
 
 .bord-left {

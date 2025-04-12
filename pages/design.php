@@ -39,6 +39,7 @@ echo <<<HTML
     <link rel="stylesheet" href="../fontawesome/css/fontawesome.css">
     <link rel="stylesheet" href="../fontawesome/css/brands.css">
     <link rel="stylesheet" href="../fontawesome/css/solid.css">
+    <link rel="stylesheet" type="text/css" href="../public/css/imprimer.css" media="print">
     <script src="../public/js/jquery-3.7.1.min.js"></script>
     <script src='../public/js/maskmoney/src/jquery.maskMoney.js'></script>
     <script src="../public/js/affMtt.js"></script> <!-- Afficher FCFA -->

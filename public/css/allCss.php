@@ -1,6 +1,11 @@
 <style>
 
 @font-face {
+    font-family: 'Gontserrat';
+    src: url('../src/fonts/Gontserrat-Regular.ttf');
+}
+
+@font-face {
     font-family: 'Rio';
     src: url('../src/fonts/RioGrande.ttf');
 }
@@ -9,7 +14,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto';
+    font-family: 'Gontserrat';
 }
 
 :root {
@@ -326,6 +331,18 @@ td a {
     .add-btn a {
         margin: 14px 0 0;
     }
+}
+
+/* Imprimer */
+
+.imp-btn {
+    margin: 50px 0 100px;
+    text-align: center;
+}
+
+.imp-btn a {
+    font-size: 18px;
+    color: var(--noir);
 }
 
 </style>

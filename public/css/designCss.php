@@ -9,7 +9,7 @@
     z-index: 99;
     background-color: var(--noir);
     transition: all 0.5s ease;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     overflow: hidden;
@@ -141,11 +141,8 @@
 }
 
 .sidebar li.profile {
-    position: absolute;
+    position: relative;
     height: 60px;
-    width: 0;
-    left: 0;
-    bottom: 0;
     padding: 10px 0;
     overflow: hidden;
     transition: all 0.5s ease;
@@ -177,7 +174,7 @@
 .sidebar .profile #log_out {
     position: absolute;
     top: 50%;
-    right: 0;
+    right: 15%;
     transform: translateY(-50%);
     background-color: var(--noir);
     width: 100%;
@@ -306,12 +303,6 @@
 @media (max-height: 700px) {
     .sidebar {
         height: auto;
-    }
-
-    .sidebar li.profile {
-        position: relative;
-        margin-left: -14px;
-        margin-top: 200px;
     }
 }
 

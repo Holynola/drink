@@ -362,7 +362,7 @@ include 'triCon.php';
                         (-- Sous-requête pour sommer le stock initial
                          SELECT serviceSt, BoissonSt, SUM(qteSt) AS total_qteSt
                          FROM stock
-                         WHERE serviceSt = 2
+                         WHERE serviceSt = $service
                          GROUP BY serviceSt, BoissonSt) s
                     LEFT JOIN
                         boisson b ON s.BoissonSt = b.idB
@@ -414,3 +414,5 @@ include 'triCon.php';
         </div>
     </div>
 </div>
+
+<?php include 'print.php'; ?>

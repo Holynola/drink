@@ -1,0 +1,19 @@
+@media print {
+	/* Définition de la taille de la page */
+    @page {
+      size: A4;
+      marks: crop;
+      bleed: 5mm;
+      padding: 10mm;
+    }
+
+    .left-div,
+    .card {
+    	page-break-inside: avoid;
+    }
+}
+
+.imp-btn,
+.tri-div {
+	display: none;
+}
